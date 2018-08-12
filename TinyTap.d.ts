@@ -1,4 +1,4 @@
-interface Game {
+export interface Game {
     //base_url - the base url of the amazon bucket
     baseUrl:string; //ex. https://df28ufcn2a3do.cloudfront.net/586D81B3-0D0F-4D1E-9DA0-B3252E32C09D/unzipped/
 
