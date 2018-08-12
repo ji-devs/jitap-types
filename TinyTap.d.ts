@@ -116,6 +116,9 @@ interface Activity {
     //Recording file if there is an activity-wide audio
     filePathIntroRecording: string; //ex "photo7/activity0/activity0.mp3",
 
+    pk: PrimaryKey; // ex. 11577,
+    folderPath: string; // ex. "photo7/activity0"
+
     //Settings is where the activities are differentiated at top-level
     //More differentiation happens per-shape as well
     settings: 
@@ -124,13 +127,13 @@ interface Activity {
         CommonActivitySettings
         // R or reading (say something)
         |   CommonActivitySettings & {
-                advance: boolean; 
+                advance: boolean; //continue after reading
             } 
         // A or soundboard
         |   CommonActivitySettings & {
-                soundFunMode: boolean; 
-                soundFlatMode: boolean; 
-                showShape: boolean; 
+                soundFunMode: boolean;  //play one at a time
+                soundFlatMode: boolean; // ??? 
+                showShape: boolean;  // show hints
             } 
         // V or video
         |   CommonActivitySettings & {
@@ -150,7 +153,7 @@ interface Activity {
             }
         // T or talk and type 
         |   CommonActivitySettings & {
-                soundShowToolTip: boolean;
+                soundShowToolTip: boolean; //show hints
             }
     
     shapes: Array<
@@ -162,17 +165,12 @@ interface Activity {
                 // Also R or reading (say something)
                 // Also V or video
                 // Also Q or questions
+                // Also P or puzzle
                 CommonShapeSettings
                 // A or soundboard
                 |   CommonShapeSettings & {
-                        originTransform: TransformString; 
-                        linkToPage: PageLink; 
                         toolTipText: string;
                     } 
-                // P or puzzle
-                |   CommonShapeSettings & {
-                        originTransform: TransformString;
-                    }
                 // T or talk and type 
                 |   CommonShapeSettings & {
                         textInputLanguage: string; //example: "en-US",
@@ -186,8 +184,6 @@ interface Activity {
         }
     >;
     
-    pk: PrimaryKey; // ex. 11577,
-    folderPath: string; // ex. "photo7/activity0"
 }
 
 interface CommonActivitySettings {
@@ -196,6 +192,7 @@ interface CommonActivitySettings {
 
 interface CommonShapeSettings {
     linkToPage: PageLink;
+    originTransform: TransformString; 
 }
 
 type PrimaryKey = number;
