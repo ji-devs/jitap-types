@@ -6,7 +6,7 @@ export interface Slide {
 //DESIGN
 interface Design {
     bg?:string;
-    stickers: [ImageAsset];
+    stickers: Array<ImageAsset>;
 }
 
 //ACTIVITIES
@@ -30,7 +30,7 @@ declare enum ActivityKind {
 //QUESTIONS
 interface Activity_Questions {
     kind: ActivityKind.QUESTION;
-    questions: [Question];
+    questions: Array<Question>;
 }
 
 interface Question {
@@ -49,7 +49,7 @@ type QuestionAudio = Partial<{
 interface Activity_Soundboard {
     kind: ActivityKind.SOUNDBOARD
     options: Soundboard_Options;
-    items: [Soundboard_Item];
+    items: Array<Soundboard_Item>;
 }
 
 interface Soundboard_Options {
@@ -69,7 +69,7 @@ interface Soundboard_Item {
 interface Activity_Puzzle {
     kind: ActivityKind.PUZZLE;
     options: Puzzle_Options;
-    items: [Puzzle_Item];
+    items: Array<Puzzle_Item>;
 }
 
 interface Puzzle_Options {
@@ -107,7 +107,7 @@ declare enum Video_SourceType { Upload = 0, Youtube =  1}
 interface Activity_TalkType {
     kind: ActivityKind.TALK_TYPE;
     options: TalkType_Options;
-    items: [TalkType_Item];
+    items: Array<TalkType_Item>;
 }
 
 interface TalkType_Options {
