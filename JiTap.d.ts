@@ -13,23 +13,23 @@ interface Design {
 type Activity = 
     Activity_Questions
     | Activity_Soundboard
-    | Activity_SaySomething
     | Activity_Puzzle
+    | Activity_SaySomething
     | Activity_Video
     | Activity_TalkType
 
 declare enum ActivityKind {
-    QUESTION = 0, 
-    TALK_TYPE = 1, 
-    SOUNDBOARD = 2, 
-    PUZZLE = 3, 
-    VIDEO = 4, 
-    SAY_SOMETHING = 5, 
+    QUESTIONS = 0,
+    SOUNDBOARD = 1,
+    PUZZLE = 2,
+    SAY_SOMETHING = 3,
+    VIDEO = 4,
+    TALK_TYPE = 5
 }
 
 //QUESTIONS
 interface Activity_Questions {
-    kind: ActivityKind.QUESTION;
+    kind: ActivityKind.QUESTIONS; 
     questions: Array<Question>;
 }
 
@@ -47,7 +47,7 @@ type QuestionAudio = Partial<{
 
 //SOUNDBOARD 
 interface Activity_Soundboard {
-    kind: ActivityKind.SOUNDBOARD
+    kind: ActivityKind.SOUNDBOARD; 
     options: Soundboard_Options;
     items: Array<Soundboard_Item>;
 }
@@ -67,7 +67,7 @@ interface Soundboard_Item {
 
 //PUZZLE 
 interface Activity_Puzzle {
-    kind: ActivityKind.PUZZLE;
+    kind: ActivityKind.PUZZLE; 
     options: Puzzle_Options;
     items: Array<Puzzle_Item>;
 }
@@ -88,7 +88,7 @@ interface Puzzle_Item {
 
 //SAY SOMETHING
 interface Activity_SaySomething {
-    kind: ActivityKind.SAY_SOMETHING;
+    kind: ActivityKind.SAY_SOMETHING; 
     audio?: AudioAsset;
     continueAfter: boolean;
     jump?: string;
@@ -96,16 +96,19 @@ interface Activity_SaySomething {
 
 //VIDEO
 interface Activity_Video {
-    kind: ActivityKind.VIDEO;
+    kind: ActivityKind.VIDEO; 
     src?: string;
-    type?: Video_SourceType;
+    type?: VideoType;
 }
 
-declare enum Video_SourceType { Upload = 0, Youtube =  1}
+declare enum VideoType {
+    UPLOAD = 0,
+    YOUTUBE = 1
+}
 
 //TALK_TYPE 
 interface Activity_TalkType {
-    kind: ActivityKind.TALK_TYPE;
+    kind: ActivityKind.TALK_TYPE; 
     options: TalkType_Options;
     items: Array<TalkType_Item>;
 }
@@ -121,22 +124,30 @@ interface TalkType_Item {
     trace: Trace;
     audio?: AudioAsset;
     answer: string;
-    answerType: TalkType_AnswerType;
+    answerType: TalkTypeAnswerType;
 }
 
-declare enum TalkType_AnswerType { Keyboard = 0, Microphone = 1}
+
+declare enum TalkTypeAnswerType {
+    KEYBOARD = 0,
+    MICROPHONE = 1
+}
 
 //GENERIC OBJECTS
 
 //IMAGES
 interface ImageAsset {
-    src: ImageAssetSource;
+    src: string;
+    type: ImageAssetSourceType;
     position: Point;
     scale: number;
     rotation: number;
 }
 
-type ImageAssetSource = string | ImageAssetTextSource
+declare enum ImageAssetSourceType {
+    URL = 0,
+    HTML = 1
+}
 
 interface ImageAssetTextSource {
     html: string;
@@ -144,14 +155,15 @@ interface ImageAssetTextSource {
 
 //TRACE
 
-declare enum TraceKind {
-    Rectangle = 0
-}
 
 interface Trace_Rectangle {
-    kind: TraceKind.Rectangle;
+    kind: TraceKind; 
     startPoint: Point;
     endPoint: Point;
+}
+
+declare enum TraceKind {
+    Rectangle = 0 
 }
 
 type Trace = Trace_Rectangle
