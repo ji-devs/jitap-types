@@ -2,6 +2,10 @@
   "name": "jitap-types",
   "version": "0.0.1",
   "description": "JiTap - Types",
+  "scripts": {
+    "schema:tt": "typescript-json-schema --ignoreErrors 'TinyTap.d.ts' Game",
+    "schema:ji": "typescript-json-schema --ignoreErrors 'JiTap.d.ts' Slide"
+  },
   "author": "David Komer / Jewish Interactive",
   "license": "UNLICENSED"
 }
