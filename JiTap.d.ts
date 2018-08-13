@@ -1,16 +1,12 @@
 export interface Slide {
     design:Design;
-    activity:Activity;
+    activity?:Activity;
 }
 
 //DESIGN
 interface Design {
-    bg:ImageAsset;
-    stickers: [Sticker];
-}
-
-interface Sticker {
-   img: ImageAsset;
+    bg?:string;
+    stickers: [ImageAsset];
 }
 
 //ACTIVITIES
@@ -22,8 +18,18 @@ type Activity =
     | Activity_Video
     | Activity_TalkType
 
+declare enum ActivityKind {
+    QUESTION = 0, 
+    TALK_TYPE = 1, 
+    SOUNDBOARD = 2, 
+    PUZZLE = 3, 
+    VIDEO = 4, 
+    SAY_SOMETHING = 5, 
+}
+
 //QUESTIONS
 interface Activity_Questions {
+    kind: ActivityKind.QUESTION;
     questions: [Question];
 }
 
@@ -33,40 +39,42 @@ interface Question {
     audio: QuestionAudio;
 }
 
-interface QuestionAudio {
+type QuestionAudio = Partial<{
     question: AudioAsset;
     answer: AudioAsset;
     mistake: AudioAsset;
-}
+}>
 
 //SOUNDBOARD 
 interface Activity_Soundboard {
+    kind: ActivityKind.SOUNDBOARD
     options: Soundboard_Options;
     items: [Soundboard_Item];
 }
 
 interface Soundboard_Options {
-    introAudio: AudioAsset;
-    bgAudio: AudioAsset;
+    introAudio?: AudioAsset;
+    bgAudio?: AudioAsset;
     oneTime: boolean;
     showHints: boolean;
 }
 
 interface Soundboard_Item {
     trace: Trace;
-    audio: AudioAsset;
-    jump: string;
+    audio?: AudioAsset;
+    jump?: string;
 }
 
 //PUZZLE 
 interface Activity_Puzzle {
+    kind: ActivityKind.PUZZLE;
     options: Puzzle_Options;
     items: [Puzzle_Item];
 }
 
 interface Puzzle_Options {
-    jump: string;
-    audio: AudioAsset;
+    jump?: string;
+    audio?: AudioAsset;
     freePlay: boolean;
     easyMode: boolean;
     disableHints: boolean;
@@ -75,45 +83,48 @@ interface Puzzle_Options {
 
 interface Puzzle_Item {
     trace: Trace;
-    audio: AudioAsset;
+    audio?: AudioAsset;
 }
 
 //SAY SOMETHING
 interface Activity_SaySomething {
-    audio: AudioAsset;
+    kind: ActivityKind.SAY_SOMETHING;
+    audio?: AudioAsset;
     continueAfter: boolean;
-    jump: string;
+    jump?: string;
 }
 
 //VIDEO
 interface Activity_Video {
-    src: string;
-    srcType: Video_SourceType;
+    kind: ActivityKind.VIDEO;
+    src?: string;
+    type?: Video_SourceType;
 }
 
-declare enum Video_SourceType { Upload, Youtube }
+declare enum Video_SourceType { Upload = 0, Youtube =  1}
 
 //TALK_TYPE 
 interface Activity_TalkType {
+    kind: ActivityKind.TALK_TYPE;
     options: TalkType_Options;
     items: [TalkType_Item];
 }
 
 interface TalkType_Options {
-    jump: string;
-    audio: AudioAsset;
+    jump?: string;
+    audio?: AudioAsset;
     showHints: boolean;
 }
 
 
 interface TalkType_Item {
     trace: Trace;
-    audio: AudioAsset;
+    audio?: AudioAsset;
     answer: string;
     answerType: TalkType_AnswerType;
 }
 
-declare enum TalkType_AnswerType { Keyboard , Microphone }
+declare enum TalkType_AnswerType { Keyboard = 0, Microphone = 1}
 
 //GENERIC OBJECTS
 
@@ -125,18 +136,20 @@ interface ImageAsset {
     rotation: number;
 }
 
-type ImageAssetSource = ImageAssetImageSource | ImageAssetTextSource
-
-interface ImageAssetImageSource {
-    url: string;
-}
+type ImageAssetSource = string | ImageAssetTextSource
 
 interface ImageAssetTextSource {
     html: string;
 }
 
 //TRACE
+
+declare enum TraceKind {
+    Rectangle = 0
+}
+
 interface Trace_Rectangle {
+    kind: TraceKind.Rectangle;
     startPoint: Point;
     endPoint: Point;
 }
