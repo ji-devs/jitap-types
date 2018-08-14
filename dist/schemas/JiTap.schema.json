@@ -1,0 +1,384 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "JiTap.ActivityKind.PUZZLE": {
+            "enum": [
+                2
+            ],
+            "type": "number"
+        },
+        "JiTap.ActivityKind.QUESTIONS": {
+            "enum": [
+                0
+            ],
+            "type": "number"
+        },
+        "JiTap.ActivityKind.SAY_SOMETHING": {
+            "enum": [
+                3
+            ],
+            "type": "number"
+        },
+        "JiTap.ActivityKind.SOUNDBOARD": {
+            "enum": [
+                1
+            ],
+            "type": "number"
+        },
+        "JiTap.ActivityKind.TALK_TYPE": {
+            "enum": [
+                5
+            ],
+            "type": "number"
+        },
+        "JiTap.ActivityKind.VIDEO": {
+            "enum": [
+                4
+            ],
+            "type": "number"
+        },
+        "JiTap.Activity_Puzzle": {
+            "properties": {
+                "items": {
+                    "items": {
+                        "$ref": "#/definitions/JiTap.Puzzle_Item"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "$ref": "#/definitions/JiTap.ActivityKind.PUZZLE"
+                },
+                "options": {
+                    "$ref": "#/definitions/JiTap.Puzzle_Options"
+                }
+            },
+            "type": "object"
+        },
+        "JiTap.Activity_Questions": {
+            "properties": {
+                "kind": {
+                    "$ref": "#/definitions/JiTap.ActivityKind.QUESTIONS"
+                },
+                "questions": {
+                    "items": {
+                        "$ref": "#/definitions/JiTap.Question"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "JiTap.Activity_SaySomething": {
+            "properties": {
+                "audio": {
+                    "$ref": "#/definitions/JiTap.AudioAsset"
+                },
+                "continueAfter": {
+                    "type": "boolean"
+                },
+                "jump": {
+                    "type": "string"
+                },
+                "kind": {
+                    "$ref": "#/definitions/JiTap.ActivityKind.SAY_SOMETHING"
+                }
+            },
+            "type": "object"
+        },
+        "JiTap.Activity_Soundboard": {
+            "properties": {
+                "items": {
+                    "items": {
+                        "$ref": "#/definitions/JiTap.Soundboard_Item"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "$ref": "#/definitions/JiTap.ActivityKind.SOUNDBOARD"
+                },
+                "options": {
+                    "$ref": "#/definitions/JiTap.Soundboard_Options"
+                }
+            },
+            "type": "object"
+        },
+        "JiTap.Activity_TalkType": {
+            "properties": {
+                "items": {
+                    "items": {
+                        "$ref": "#/definitions/JiTap.TalkType_Item"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "$ref": "#/definitions/JiTap.ActivityKind.TALK_TYPE"
+                },
+                "options": {
+                    "$ref": "#/definitions/JiTap.TalkType_Options"
+                }
+            },
+            "type": "object"
+        },
+        "JiTap.Activity_Video": {
+            "properties": {
+                "kind": {
+                    "$ref": "#/definitions/JiTap.ActivityKind.VIDEO"
+                },
+                "src": {
+                    "type": "string"
+                },
+                "type": {
+                    "$ref": "#/definitions/JiTap.VideoType"
+                }
+            },
+            "type": "object"
+        },
+        "JiTap.AudioAsset": {
+            "properties": {
+                "src": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "JiTap.Design": {
+            "properties": {
+                "bg": {
+                    "type": "string"
+                },
+                "stickers": {
+                    "items": {
+                        "$ref": "#/definitions/JiTap.ImageAsset"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "JiTap.ImageAsset": {
+            "properties": {
+                "position": {
+                    "$ref": "#/definitions/JiTap.Point"
+                },
+                "rotation": {
+                    "type": "number"
+                },
+                "scale": {
+                    "type": "number"
+                },
+                "src": {
+                    "type": "string"
+                },
+                "type": {
+                    "$ref": "#/definitions/JiTap.ImageAssetSourceType"
+                }
+            },
+            "type": "object"
+        },
+        "JiTap.ImageAssetSourceType": {
+            "enum": [
+                0,
+                1
+            ],
+            "type": "number"
+        },
+        "JiTap.Point": {
+            "properties": {
+                "x": {
+                    "type": "number"
+                },
+                "y": {
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "JiTap.Puzzle_Item": {
+            "properties": {
+                "audio": {
+                    "$ref": "#/definitions/JiTap.AudioAsset"
+                },
+                "trace": {
+                    "$ref": "#/definitions/JiTap.Trace_Rectangle"
+                }
+            },
+            "type": "object"
+        },
+        "JiTap.Puzzle_Options": {
+            "properties": {
+                "audio": {
+                    "$ref": "#/definitions/JiTap.AudioAsset"
+                },
+                "disableHints": {
+                    "type": "boolean"
+                },
+                "easyMode": {
+                    "type": "boolean"
+                },
+                "freePlay": {
+                    "type": "boolean"
+                },
+                "jump": {
+                    "type": "string"
+                },
+                "shapes3d": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "JiTap.Question": {
+            "properties": {
+                "audio": {
+                    "$ref": "#/definitions/Partial<{question:JiTap.AudioAsset;answer:JiTap.AudioAsset;mistake:JiTap.AudioAsset;}>"
+                },
+                "label": {
+                    "type": "string"
+                },
+                "trace": {
+                    "$ref": "#/definitions/JiTap.Trace_Rectangle"
+                }
+            },
+            "type": "object"
+        },
+        "JiTap.Soundboard_Item": {
+            "properties": {
+                "audio": {
+                    "$ref": "#/definitions/JiTap.AudioAsset"
+                },
+                "jump": {
+                    "type": "string"
+                },
+                "trace": {
+                    "$ref": "#/definitions/JiTap.Trace_Rectangle"
+                }
+            },
+            "type": "object"
+        },
+        "JiTap.Soundboard_Options": {
+            "properties": {
+                "bgAudio": {
+                    "$ref": "#/definitions/JiTap.AudioAsset"
+                },
+                "introAudio": {
+                    "$ref": "#/definitions/JiTap.AudioAsset"
+                },
+                "oneTime": {
+                    "type": "boolean"
+                },
+                "showHints": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "JiTap.TalkTypeAnswerType": {
+            "enum": [
+                0,
+                1
+            ],
+            "type": "number"
+        },
+        "JiTap.TalkType_Item": {
+            "properties": {
+                "answer": {
+                    "type": "string"
+                },
+                "answerType": {
+                    "$ref": "#/definitions/JiTap.TalkTypeAnswerType"
+                },
+                "audio": {
+                    "$ref": "#/definitions/JiTap.AudioAsset"
+                },
+                "trace": {
+                    "$ref": "#/definitions/JiTap.Trace_Rectangle"
+                }
+            },
+            "type": "object"
+        },
+        "JiTap.TalkType_Options": {
+            "properties": {
+                "audio": {
+                    "$ref": "#/definitions/JiTap.AudioAsset"
+                },
+                "jump": {
+                    "type": "string"
+                },
+                "showHints": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "JiTap.TraceKind": {
+            "enum": [
+                0
+            ],
+            "type": "number"
+        },
+        "JiTap.Trace_Rectangle": {
+            "properties": {
+                "endPoint": {
+                    "$ref": "#/definitions/JiTap.Point"
+                },
+                "kind": {
+                    "$ref": "#/definitions/JiTap.TraceKind"
+                },
+                "startPoint": {
+                    "$ref": "#/definitions/JiTap.Point"
+                }
+            },
+            "type": "object"
+        },
+        "JiTap.VideoType": {
+            "enum": [
+                0,
+                1
+            ],
+            "type": "number"
+        },
+        "Partial<{question:JiTap.AudioAsset;answer:JiTap.AudioAsset;mistake:JiTap.AudioAsset;}>": {
+            "properties": {
+                "answer": {
+                    "$ref": "#/definitions/JiTap.AudioAsset"
+                },
+                "mistake": {
+                    "$ref": "#/definitions/JiTap.AudioAsset"
+                },
+                "question": {
+                    "$ref": "#/definitions/JiTap.AudioAsset"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "properties": {
+        "activity": {
+            "anyOf": [
+                {
+                    "$ref": "#/definitions/JiTap.Activity_Questions"
+                },
+                {
+                    "$ref": "#/definitions/JiTap.Activity_Soundboard"
+                },
+                {
+                    "$ref": "#/definitions/JiTap.Activity_Puzzle"
+                },
+                {
+                    "$ref": "#/definitions/JiTap.Activity_SaySomething"
+                },
+                {
+                    "$ref": "#/definitions/JiTap.Activity_Video"
+                },
+                {
+                    "$ref": "#/definitions/JiTap.Activity_TalkType"
+                }
+            ]
+        },
+        "design": {
+            "$ref": "#/definitions/JiTap.Design"
+        }
+    },
+    "type": "object"
+}
+

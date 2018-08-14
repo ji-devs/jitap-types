@@ -1,5 +1,5 @@
 export module JiTap {
-    interface Slide {
+    export interface Slide {
         design:Design;
         activity?:Activity;
     }
