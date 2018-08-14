@@ -1,4 +1,4 @@
-declare namespace JiTap {
+export module JiTap {
     interface Slide {
         design:Design;
         activity?:Activity;
