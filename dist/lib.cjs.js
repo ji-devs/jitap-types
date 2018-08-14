@@ -26,7 +26,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
     (function (ImageAssetSourceType) {
         ImageAssetSourceType[ImageAssetSourceType["URL"] = 0] = "URL";
         ImageAssetSourceType[ImageAssetSourceType["HTML"] = 1] = "HTML";
-    })(ImageAssetSourceType || (ImageAssetSourceType = {}));
+    })(ImageAssetSourceType = JiTap.ImageAssetSourceType || (JiTap.ImageAssetSourceType = {}));
     let TraceKind;
     (function (TraceKind) {
         TraceKind[TraceKind["Rectangle"] = 0] = "Rectangle";

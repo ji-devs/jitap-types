@@ -145,7 +145,7 @@ export module JiTap {
         rotation: number;
     }
     
-    enum ImageAssetSourceType {
+    export enum ImageAssetSourceType {
         URL = 0,
         HTML = 1
     }
