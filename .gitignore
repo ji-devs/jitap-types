@@ -1,6 +1,9 @@
 # Environment
 .env
 
+# Rollup
+.rpt2_cache
+
 # Vim
 # Swap
 [._]*.s[a-v][a-z]
@@ -18,10 +21,7 @@ Session.vim
 tags
 
 #project
-dist
 node_modules
-output
-secret-keys
 
 # Visual Studio Code
 .vscode/*
