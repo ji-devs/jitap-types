@@ -41,9 +41,9 @@ export module JiTap {
     }
     
     export type QuestionAudio = Partial<{
-        question: AudioAsset;
-        answer: AudioAsset;
-        mistake: AudioAsset;
+        question: string;
+        answer: string;
+        mistake: string;
     }>
     
     //SOUNDBOARD 
@@ -54,15 +54,15 @@ export module JiTap {
     }
     
     export interface Soundboard_Options {
-        introAudio?: AudioAsset;
-        bgAudio?: AudioAsset;
+        introAudio?: string;
+        bgAudio?: string;
         oneTime: boolean;
         showHints: boolean;
     }
     
     export interface Soundboard_Item {
         trace: Trace;
-        audio?: AudioAsset;
+        audio?: string;
         jump?: string;
     }
     
@@ -75,7 +75,7 @@ export module JiTap {
     
     export interface Puzzle_Options {
         jump?: string;
-        audio?: AudioAsset;
+        audio?: string;
         freePlay: boolean;
         easyMode: boolean;
         disableHints: boolean;
@@ -84,13 +84,13 @@ export module JiTap {
     
     export interface Puzzle_Item {
         trace: Trace;
-        audio?: AudioAsset;
+        audio?: string;
     }
     
     //SAY SOMETHING
     export interface Activity_SaySomething {
         kind: ActivityKind.SAY_SOMETHING; 
-        audio?: AudioAsset;
+        audio?: string;
         continueAfter: boolean;
         jump?: string;
     }
@@ -116,14 +116,14 @@ export module JiTap {
     
     export interface TalkType_Options {
         jump?: string;
-        audio?: AudioAsset;
+        audio?: string;
         showHints: boolean;
     }
     
     
     export interface TalkType_Item {
         trace: Trace;
-        audio?: AudioAsset;
+        audio?: string;
         answer: string;
         answerType: TalkTypeAnswerType;
     }
@@ -167,11 +167,6 @@ export module JiTap {
     }
     
     export type Trace = Trace_Rectangle
-    
-    //AUDIO
-    export interface AudioAsset {
-        src: string;
-    }
     
     //POINT
     export interface Point {

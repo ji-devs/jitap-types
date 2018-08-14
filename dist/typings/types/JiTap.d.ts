@@ -26,9 +26,9 @@ export declare module JiTap {
         audio: QuestionAudio;
     }
     type QuestionAudio = Partial<{
-        question: AudioAsset;
-        answer: AudioAsset;
-        mistake: AudioAsset;
+        question: string;
+        answer: string;
+        mistake: string;
     }>;
     interface Activity_Soundboard {
         kind: ActivityKind.SOUNDBOARD;
@@ -36,14 +36,14 @@ export declare module JiTap {
         items: Array<Soundboard_Item>;
     }
     interface Soundboard_Options {
-        introAudio?: AudioAsset;
-        bgAudio?: AudioAsset;
+        introAudio?: string;
+        bgAudio?: string;
         oneTime: boolean;
         showHints: boolean;
     }
     interface Soundboard_Item {
         trace: Trace;
-        audio?: AudioAsset;
+        audio?: string;
         jump?: string;
     }
     interface Activity_Puzzle {
@@ -53,7 +53,7 @@ export declare module JiTap {
     }
     interface Puzzle_Options {
         jump?: string;
-        audio?: AudioAsset;
+        audio?: string;
         freePlay: boolean;
         easyMode: boolean;
         disableHints: boolean;
@@ -61,11 +61,11 @@ export declare module JiTap {
     }
     interface Puzzle_Item {
         trace: Trace;
-        audio?: AudioAsset;
+        audio?: string;
     }
     interface Activity_SaySomething {
         kind: ActivityKind.SAY_SOMETHING;
-        audio?: AudioAsset;
+        audio?: string;
         continueAfter: boolean;
         jump?: string;
     }
@@ -85,12 +85,12 @@ export declare module JiTap {
     }
     interface TalkType_Options {
         jump?: string;
-        audio?: AudioAsset;
+        audio?: string;
         showHints: boolean;
     }
     interface TalkType_Item {
         trace: Trace;
-        audio?: AudioAsset;
+        audio?: string;
         answer: string;
         answerType: TalkTypeAnswerType;
     }
@@ -121,9 +121,6 @@ export declare module JiTap {
         Rectangle = 0
     }
     type Trace = Trace_Rectangle;
-    interface AudioAsset {
-        src: string;
-    }
     interface Point {
         x: number;
         y: number;

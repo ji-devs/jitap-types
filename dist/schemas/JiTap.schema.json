@@ -71,7 +71,7 @@
         "JiTap.Activity_SaySomething": {
             "properties": {
                 "audio": {
-                    "$ref": "#/definitions/JiTap.AudioAsset"
+                    "type": "string"
                 },
                 "continueAfter": {
                     "type": "boolean"
@@ -133,14 +133,6 @@
             },
             "type": "object"
         },
-        "JiTap.AudioAsset": {
-            "properties": {
-                "src": {
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
         "JiTap.Design": {
             "properties": {
                 "bg": {
@@ -196,7 +188,7 @@
         "JiTap.Puzzle_Item": {
             "properties": {
                 "audio": {
-                    "$ref": "#/definitions/JiTap.AudioAsset"
+                    "type": "string"
                 },
                 "trace": {
                     "$ref": "#/definitions/JiTap.Trace_Rectangle"
@@ -207,7 +199,7 @@
         "JiTap.Puzzle_Options": {
             "properties": {
                 "audio": {
-                    "$ref": "#/definitions/JiTap.AudioAsset"
+                    "type": "string"
                 },
                 "disableHints": {
                     "type": "boolean"
@@ -230,7 +222,7 @@
         "JiTap.Question": {
             "properties": {
                 "audio": {
-                    "$ref": "#/definitions/Partial<{question:JiTap.AudioAsset;answer:JiTap.AudioAsset;mistake:JiTap.AudioAsset;}>"
+                    "$ref": "#/definitions/Partial<{question:string;answer:string;mistake:string;}>"
                 },
                 "label": {
                     "type": "string"
@@ -244,7 +236,7 @@
         "JiTap.Soundboard_Item": {
             "properties": {
                 "audio": {
-                    "$ref": "#/definitions/JiTap.AudioAsset"
+                    "type": "string"
                 },
                 "jump": {
                     "type": "string"
@@ -258,10 +250,10 @@
         "JiTap.Soundboard_Options": {
             "properties": {
                 "bgAudio": {
-                    "$ref": "#/definitions/JiTap.AudioAsset"
+                    "type": "string"
                 },
                 "introAudio": {
-                    "$ref": "#/definitions/JiTap.AudioAsset"
+                    "type": "string"
                 },
                 "oneTime": {
                     "type": "boolean"
@@ -288,7 +280,7 @@
                     "$ref": "#/definitions/JiTap.TalkTypeAnswerType"
                 },
                 "audio": {
-                    "$ref": "#/definitions/JiTap.AudioAsset"
+                    "type": "string"
                 },
                 "trace": {
                     "$ref": "#/definitions/JiTap.Trace_Rectangle"
@@ -299,7 +291,7 @@
         "JiTap.TalkType_Options": {
             "properties": {
                 "audio": {
-                    "$ref": "#/definitions/JiTap.AudioAsset"
+                    "type": "string"
                 },
                 "jump": {
                     "type": "string"
@@ -337,16 +329,16 @@
             ],
             "type": "number"
         },
-        "Partial<{question:JiTap.AudioAsset;answer:JiTap.AudioAsset;mistake:JiTap.AudioAsset;}>": {
+        "Partial<{question:string;answer:string;mistake:string;}>": {
             "properties": {
                 "answer": {
-                    "$ref": "#/definitions/JiTap.AudioAsset"
+                    "type": "string"
                 },
                 "mistake": {
-                    "$ref": "#/definitions/JiTap.AudioAsset"
+                    "type": "string"
                 },
                 "question": {
-                    "$ref": "#/definitions/JiTap.AudioAsset"
+                    "type": "string"
                 }
             },
             "type": "object"
