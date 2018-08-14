@@ -109,6 +109,9 @@ export declare module JiTap {
         URL = 0,
         HTML = 1
     }
+    interface ImageAssetTextSource {
+        html: string;
+    }
     interface Trace_Rectangle {
         kind: TraceKind;
         startPoint: Point;

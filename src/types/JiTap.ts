@@ -5,13 +5,13 @@ export module JiTap {
     }
     
     //DESIGN
-    interface Design {
+    export interface Design {
         bg?:string;
         stickers: Array<ImageAsset>;
     }
     
     //ACTIVITIES
-    type Activity = 
+    export type Activity = 
         Activity_Questions
         | Activity_Soundboard
         | Activity_Puzzle
@@ -19,7 +19,7 @@ export module JiTap {
         | Activity_Video
         | Activity_TalkType
     
-    enum ActivityKind {
+    export enum ActivityKind {
         QUESTIONS = 0,
         SOUNDBOARD = 1,
         PUZZLE = 2,
@@ -29,51 +29,51 @@ export module JiTap {
     }
     
     //QUESTIONS
-    interface Activity_Questions {
+    export interface Activity_Questions {
         kind: ActivityKind.QUESTIONS; 
         questions: Array<Question>;
     }
     
-    interface Question {
+    export interface Question {
         label: string;
         trace: Trace;
         audio: QuestionAudio;
     }
     
-    type QuestionAudio = Partial<{
+    export type QuestionAudio = Partial<{
         question: AudioAsset;
         answer: AudioAsset;
         mistake: AudioAsset;
     }>
     
     //SOUNDBOARD 
-    interface Activity_Soundboard {
+    export interface Activity_Soundboard {
         kind: ActivityKind.SOUNDBOARD; 
         options: Soundboard_Options;
         items: Array<Soundboard_Item>;
     }
     
-    interface Soundboard_Options {
+    export interface Soundboard_Options {
         introAudio?: AudioAsset;
         bgAudio?: AudioAsset;
         oneTime: boolean;
         showHints: boolean;
     }
     
-    interface Soundboard_Item {
+    export interface Soundboard_Item {
         trace: Trace;
         audio?: AudioAsset;
         jump?: string;
     }
     
     //PUZZLE 
-    interface Activity_Puzzle {
+    export interface Activity_Puzzle {
         kind: ActivityKind.PUZZLE; 
         options: Puzzle_Options;
         items: Array<Puzzle_Item>;
     }
     
-    interface Puzzle_Options {
+    export interface Puzzle_Options {
         jump?: string;
         audio?: AudioAsset;
         freePlay: boolean;
@@ -82,13 +82,13 @@ export module JiTap {
         shapes3d: boolean;
     }
     
-    interface Puzzle_Item {
+    export interface Puzzle_Item {
         trace: Trace;
         audio?: AudioAsset;
     }
     
     //SAY SOMETHING
-    interface Activity_SaySomething {
+    export interface Activity_SaySomething {
         kind: ActivityKind.SAY_SOMETHING; 
         audio?: AudioAsset;
         continueAfter: boolean;
@@ -96,32 +96,32 @@ export module JiTap {
     }
     
     //VIDEO
-    interface Activity_Video {
+    export interface Activity_Video {
         kind: ActivityKind.VIDEO; 
         src?: string;
         type?: VideoType;
     }
     
-    enum VideoType {
+    export enum VideoType {
         UPLOAD = 0,
         YOUTUBE = 1
     }
     
     //TALK_TYPE 
-    interface Activity_TalkType {
+    export interface Activity_TalkType {
         kind: ActivityKind.TALK_TYPE; 
         options: TalkType_Options;
         items: Array<TalkType_Item>;
     }
     
-    interface TalkType_Options {
+    export interface TalkType_Options {
         jump?: string;
         audio?: AudioAsset;
         showHints: boolean;
     }
     
     
-    interface TalkType_Item {
+    export interface TalkType_Item {
         trace: Trace;
         audio?: AudioAsset;
         answer: string;
@@ -129,7 +129,7 @@ export module JiTap {
     }
     
     
-    enum TalkTypeAnswerType {
+    export enum TalkTypeAnswerType {
         KEYBOARD = 0,
         MICROPHONE = 1
     }
@@ -137,7 +137,7 @@ export module JiTap {
     //GENERIC OBJECTS
     
     //IMAGES
-    interface ImageAsset {
+    export interface ImageAsset {
         src: string;
         type: ImageAssetSourceType;
         position: Point;
@@ -150,32 +150,31 @@ export module JiTap {
         HTML = 1
     }
     
-    interface ImageAssetTextSource {
+    export interface ImageAssetTextSource {
         html: string;
     }
     
     //TRACE
     
-    
-    interface Trace_Rectangle {
+    export interface Trace_Rectangle {
         kind: TraceKind; 
         startPoint: Point;
         endPoint: Point;
     }
     
-    enum TraceKind {
+    export enum TraceKind {
         Rectangle = 0 
     }
     
-    type Trace = Trace_Rectangle
+    export type Trace = Trace_Rectangle
     
     //AUDIO
-    interface AudioAsset {
+    export interface AudioAsset {
         src: string;
     }
     
     //POINT
-    interface Point {
+    export interface Point {
         x: number;
         y: number; 
     }

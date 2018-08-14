@@ -3,7 +3,7 @@ export declare module TinyTap {
         baseUrl: string;
         structure: {
             pk: PrimaryKey;
-            shuffleType: 0 | 1 | 2;
+            shuffleType: ShuffleType;
             version: number;
             musicFile: string;
             settings: {
@@ -18,35 +18,66 @@ export declare module TinyTap {
             slides: Array<Slide>;
         };
     }
+    enum ShuffleType {
+        NO_SHUFFLE = 0,
+        ALL_SLIDES = 1,
+        MIDDLE = 2
+    }
     interface Slide {
         filePath: string;
         filePathImage: string;
         filePathImageThumb: string;
         pk: PrimaryKey;
-        engineType: 'S' | 'R' | 'A' | 'V' | 'P' | 'Q' | 'T';
+        engineType: EngineType;
         layers: Array<Layer>;
         activities: Array<Activity>;
     }
+    enum EngineType {
+        NONE = "S",
+        SAY_SOMETHING = "R",
+        SOUNDBOARD = "A",
+        VIDEO = "V",
+        PUZZLE = "P",
+        QUESTIONS = "Q",
+        TALK_TYPE = "T"
+    }
     type Layer = CommonLayer & {
-        type: "bg";
+        type: LayerType.BG;
         filename: string;
     } | CommonLayer & {
-        type: "anim";
+        type: LayerType.ANIM;
         filename: string;
     } | CommonLayer & {
-        type: "img";
+        type: LayerType.IMAGE;
         filename: string;
     } | CommonLayer & {
-        type: "txt";
+        type: LayerType.TEXT;
         info: string;
     };
+    enum LayerType {
+        BG = "bg",
+        ANIM = "anim",
+        IMAGE = "img",
+        TEXT = "txt"
+    }
     interface CommonLayer {
         frame: FrameString;
         transform: TransformString;
-        InteractiveLoopType: 0 | 1 | 2 | 3;
-        InteractiveShowType: 0 | 1 | 2;
+        InteractiveLoopType: InteractiveLoopType;
+        InteractiveShowType: InteractiveShowType;
         interactiveLayerSound: string;
         interactiveToggleShow: boolean;
+    }
+    enum InteractiveLoopType {
+        PLAY_ON_LOAD = 0,
+        PLAY_ON_TAP_AND_LOOP = 1,
+        PLAY_ON_TAP_AND_STOP = 2,
+        PLAY_ON_LOAD_ONCE = 3
+    }
+    enum InteractiveShowType {
+        SHOW_ON_LOAD = 0,
+        HIDE_ON_TAP = 1,
+        SHOW_ON_TAP = 2
     }
     interface Activity {
         filePathIntroRecording: string;
@@ -66,7 +97,7 @@ export declare module TinyTap {
             videoThumbURL: string;
         } | CommonActivitySettings & {
             soundFlatMode: boolean;
-            ShapePuzzleTheme: 0 | 1 | 2;
+            ShapePuzzleTheme: PuzzleShapeTheme;
         } | CommonActivitySettings & {
             soundShowToolTip: boolean;
         };
@@ -84,6 +115,11 @@ export declare module TinyTap {
             pk: PrimaryKey;
             pathData: PathDataString;
         }>;
+    }
+    enum PuzzleShapeTheme {
+        THREE_D = 0,
+        FLAT = 1,
+        WOODEN = 2
     }
     interface CommonActivitySettings {
         linkToPage: PageLink;

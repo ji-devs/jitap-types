@@ -8,10 +8,7 @@ export module TinyTap {
             pk: PrimaryKey; //ex. 1612
     
             //How the slides shuffle in a game
-            shuffleType: 
-                0 //don't shuffle
-                | 1 //shuffle all slides
-                | 2; //all except first and last
+            shuffleType: ShuffleType;
     
             version: number;  //ex. 0
     
@@ -36,8 +33,14 @@ export module TinyTap {
             slides: Array<Slide>;
         }
     }
-    
-    interface Slide {
+
+    export enum ShuffleType {
+        NO_SHUFFLE = 0,
+        ALL_SLIDES = 1,
+        MIDDLE = 2 //all except first and last
+    }
+
+    export interface Slide {
         //relative path in bucket for slide
         filePath: string; //ex. photo7/
     
@@ -50,14 +53,7 @@ export module TinyTap {
         pk: PrimaryKey;  //ex. 8745
     
         //activity type
-        engineType: 
-            'S' //slide (no activity)
-            | 'R' //reading (say something)
-            | 'A' //soundboard 
-            | 'V' //video
-            | 'P' //puzzle
-            | 'Q' // ask a question
-            | 'T'; // Talk or Type
+        engineType: EngineType;
     
         //Design layers 
         layers: Array<Layer>;
@@ -65,42 +61,52 @@ export module TinyTap {
         //Activities
         activities: Array<Activity>;
     }
-    
+   
+    export enum EngineType {
+        NONE = 'S',
+        SAY_SOMETHING = 'R', //(reading)
+        SOUNDBOARD = 'A',
+        VIDEO = 'V',
+        PUZZLE = 'P',
+        QUESTIONS = 'Q',
+        TALK_TYPE = 'T'
+    }
+
     //All layer filenames go in ${filePath}/layers/
-    type Layer = 
+    export type Layer = 
         CommonLayer & {
-            type: "bg"; 
+            type: LayerType.BG; 
             filename: string;
         }
         | CommonLayer & {
-            type: "anim";
+            type: LayerType.ANIM;
             filename: string;
         }
         | CommonLayer & {
-            type: "img"; 
+            type: LayerType.IMAGE; 
             filename: string;
         }
         | CommonLayer & {
-            type: "txt"; 
+            type: LayerType.TEXT; 
             info: string; //HTML string
         }
-    
-    interface CommonLayer {
+   
+    export enum LayerType {
+        BG = "bg",
+        ANIM = "anim",
+        IMAGE = "img",
+        TEXT = "txt",
+    }
+
+    export interface CommonLayer {
         frame: FrameString;
         
         transform: TransformString; 
     
-        InteractiveLoopType:
-            0 // PlayOnLoad
-            | 1 // PlayOnTapAndLoop
-            | 2 // PlayOnTapAndStop
-            | 3; // PlayOnLoadOnce
+        InteractiveLoopType: InteractiveLoopType;
     
         //Controls sticker interactivity, indepedantly from activities.
-        InteractiveShowType: 
-            0 // Show on Load
-            | 1 // Hide on Tap,
-            | 2; // Show on Tap,
+        InteractiveShowType: InteractiveShowType;
     
         //Interaction sound filename 
         interactiveLayerSound: string;
@@ -108,9 +114,23 @@ export module TinyTap {
         //interaction should toggle show/hide
         interactiveToggleShow: boolean; 
     }
-    
-    
-    interface Activity {
+   
+    export enum InteractiveLoopType {
+        PLAY_ON_LOAD = 0,
+        PLAY_ON_TAP_AND_LOOP = 1,
+        PLAY_ON_TAP_AND_STOP = 2,
+        PLAY_ON_LOAD_ONCE = 3
+    }
+
+    export enum InteractiveShowType {
+        SHOW_ON_LOAD = 0,
+        HIDE_ON_TAP = 1,
+        SHOW_ON_TAP = 2
+    }
+
+   
+
+    export interface Activity {
         //Recording duration if there is an activity-wide audio
         //Deprecated recordingDuration: number; //ex. 3.52943310657596,
         
@@ -147,16 +167,13 @@ export module TinyTap {
             // P or puzzle
             |   CommonActivitySettings & {
                     soundFlatMode: boolean; //3d Shapes
-                    ShapePuzzleTheme:
-                        0 // 3D
-                        | 1 // Flat
-                        | 2; // Wooden
+                    ShapePuzzleTheme: PuzzleShapeTheme;
                 }
             // T or talk and type 
             |   CommonActivitySettings & {
                     soundShowToolTip: boolean; //show hints
                 }
-        
+       
         shapes: Array<
     
             {
@@ -187,32 +204,37 @@ export module TinyTap {
         
     }
     
-    interface CommonActivitySettings {
+    export enum PuzzleShapeTheme {
+        THREE_D = 0,
+        FLAT = 1,
+        WOODEN = 2
+    }
+
+    export interface CommonActivitySettings {
         linkToPage: PageLink;
     }
     
-    interface CommonShapeSettings {
+    export interface CommonShapeSettings {
         linkToPage: PageLink;
         originTransform: TransformString; 
     }
     
-    type PrimaryKey = number;
+    export type PrimaryKey = number;
     
-    type PageLink = number; //not pk, rather it's the order of the slide (0-based)
+    export type PageLink = number; //not pk, rather it's the order of the slide (0-based)
     
     //CSS matrix() (not matrix3D())
     //ex. "[number, number, number, number, number, number]",
-    type TransformString = string;
+    export type TransformString = string;
     
     //XML / Plist
-    type PathDataString = string;
+    export type PathDataString = string;
     
     //example: "{0, 1262.1670999999999}"
     //not a lawful json string...
-    type VideoRangeString = string;
-    
+    export type VideoRangeString = string;
     
     //example: "{{x1,y1}, {x2, y2}}"
     //not a lawful json string...
-    type FrameString = string;
+    export type FrameString = string;
 }

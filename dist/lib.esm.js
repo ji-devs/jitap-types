@@ -8,17 +8,17 @@ var JiTap;
         ActivityKind[ActivityKind["SAY_SOMETHING"] = 3] = "SAY_SOMETHING";
         ActivityKind[ActivityKind["VIDEO"] = 4] = "VIDEO";
         ActivityKind[ActivityKind["TALK_TYPE"] = 5] = "TALK_TYPE";
-    })(ActivityKind || (ActivityKind = {}));
+    })(ActivityKind = JiTap.ActivityKind || (JiTap.ActivityKind = {}));
     let VideoType;
     (function (VideoType) {
         VideoType[VideoType["UPLOAD"] = 0] = "UPLOAD";
         VideoType[VideoType["YOUTUBE"] = 1] = "YOUTUBE";
-    })(VideoType || (VideoType = {}));
+    })(VideoType = JiTap.VideoType || (JiTap.VideoType = {}));
     let TalkTypeAnswerType;
     (function (TalkTypeAnswerType) {
         TalkTypeAnswerType[TalkTypeAnswerType["KEYBOARD"] = 0] = "KEYBOARD";
         TalkTypeAnswerType[TalkTypeAnswerType["MICROPHONE"] = 1] = "MICROPHONE";
-    })(TalkTypeAnswerType || (TalkTypeAnswerType = {}));
+    })(TalkTypeAnswerType = JiTap.TalkTypeAnswerType || (JiTap.TalkTypeAnswerType = {}));
     let ImageAssetSourceType;
     (function (ImageAssetSourceType) {
         ImageAssetSourceType[ImageAssetSourceType["URL"] = 0] = "URL";
@@ -27,7 +27,7 @@ var JiTap;
     let TraceKind;
     (function (TraceKind) {
         TraceKind[TraceKind["Rectangle"] = 0] = "Rectangle";
-    })(TraceKind || (TraceKind = {}));
+    })(TraceKind = JiTap.TraceKind || (JiTap.TraceKind = {}));
 })(JiTap || (JiTap = {}));
 
 export { JiTap };

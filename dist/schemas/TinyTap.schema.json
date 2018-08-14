@@ -88,12 +88,7 @@
                                 {
                                     "properties": {
                                         "ShapePuzzleTheme": {
-                                            "enum": [
-                                                0,
-                                                1,
-                                                2
-                                            ],
-                                            "type": "number"
+                                            "$ref": "#/definitions/TinyTap.PuzzleShapeTheme"
                                         },
                                         "soundFlatMode": {
                                             "type": "boolean"
@@ -203,21 +198,10 @@
         "TinyTap.CommonLayer": {
             "properties": {
                 "InteractiveLoopType": {
-                    "enum": [
-                        0,
-                        1,
-                        2,
-                        3
-                    ],
-                    "type": "number"
+                    "$ref": "#/definitions/TinyTap.InteractiveLoopType"
                 },
                 "InteractiveShowType": {
-                    "enum": [
-                        0,
-                        1,
-                        2
-                    ],
-                    "type": "number"
+                    "$ref": "#/definitions/TinyTap.InteractiveShowType"
                 },
                 "frame": {
                     "type": "string"
@@ -245,6 +229,51 @@
             },
             "type": "object"
         },
+        "TinyTap.EngineType": {
+            "enum": [
+                "A",
+                "P",
+                "Q",
+                "R",
+                "S",
+                "T",
+                "V"
+            ],
+            "type": "string"
+        },
+        "TinyTap.InteractiveLoopType": {
+            "enum": [
+                0,
+                1,
+                2,
+                3
+            ],
+            "type": "number"
+        },
+        "TinyTap.InteractiveShowType": {
+            "enum": [
+                0,
+                1,
+                2
+            ],
+            "type": "number"
+        },
+        "TinyTap.PuzzleShapeTheme": {
+            "enum": [
+                0,
+                1,
+                2
+            ],
+            "type": "number"
+        },
+        "TinyTap.ShuffleType": {
+            "enum": [
+                0,
+                1,
+                2
+            ],
+            "type": "number"
+        },
         "TinyTap.Slide": {
             "properties": {
                 "activities": {
@@ -254,16 +283,7 @@
                     "type": "array"
                 },
                 "engineType": {
-                    "enum": [
-                        "A",
-                        "P",
-                        "Q",
-                        "R",
-                        "S",
-                        "T",
-                        "V"
-                    ],
-                    "type": "string"
+                    "$ref": "#/definitions/TinyTap.EngineType"
                 },
                 "filePath": {
                     "type": "string"
@@ -414,12 +434,7 @@
                     "type": "object"
                 },
                 "shuffleType": {
-                    "enum": [
-                        0,
-                        1,
-                        2
-                    ],
-                    "type": "number"
+                    "$ref": "#/definitions/TinyTap.ShuffleType"
                 },
                 "slides": {
                     "items": {
