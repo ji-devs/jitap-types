@@ -1,5 +1,5 @@
 {
-  "name": "jitap-types",
+  "name": "@types/jitap",
   "version": "0.0.1",
   "description": "JiTap - Types",
   "scripts": {
