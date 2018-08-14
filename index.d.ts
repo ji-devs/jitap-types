@@ -1,4 +1,5 @@
-import * as TinyTap from "./TinyTap";
-import * as JiTap from "./JiTap";
+export * from "./TinyTap";
+export * from "./JiTap";
 
-export {TinyTap, JiTap}
+import {JiTap} from "./JiTap";
+

@@ -2,6 +2,7 @@
   "name": "@types/jitap",
   "version": "0.0.1",
   "description": "JiTap - Types",
+  "typings": "./index.d.ts",
   "scripts": {
     "schema:tt": "typescript-json-schema --ignoreErrors 'TinyTap.d.ts' Game",
     "schema:ji": "typescript-json-schema --ignoreErrors 'JiTap.d.ts' Slide"

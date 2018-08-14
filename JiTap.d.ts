@@ -1,4 +1,5 @@
-export interface Slide {
+export namespace JiTap {
+interface Slide {
     design:Design;
     activity?:Activity;
 }
@@ -18,7 +19,7 @@ type Activity =
     | Activity_Video
     | Activity_TalkType
 
-declare enum ActivityKind {
+enum ActivityKind {
     QUESTIONS = 0,
     SOUNDBOARD = 1,
     PUZZLE = 2,
@@ -101,7 +102,7 @@ interface Activity_Video {
     type?: VideoType;
 }
 
-declare enum VideoType {
+enum VideoType {
     UPLOAD = 0,
     YOUTUBE = 1
 }
@@ -128,7 +129,7 @@ interface TalkType_Item {
 }
 
 
-declare enum TalkTypeAnswerType {
+enum TalkTypeAnswerType {
     KEYBOARD = 0,
     MICROPHONE = 1
 }
@@ -144,7 +145,7 @@ interface ImageAsset {
     rotation: number;
 }
 
-declare enum ImageAssetSourceType {
+enum ImageAssetSourceType {
     URL = 0,
     HTML = 1
 }
@@ -162,7 +163,7 @@ interface Trace_Rectangle {
     endPoint: Point;
 }
 
-declare enum TraceKind {
+enum TraceKind {
     Rectangle = 0 
 }
 
@@ -178,4 +179,4 @@ interface Point {
     x: number;
     y: number; 
 }
-
+}
