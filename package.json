@@ -1,5 +1,5 @@
 {
-  "name": "@types/jitap",
+  "name": "jitap-types",
   "version": "0.0.1",
   "types": "./index.d.ts",
   "description": "JiTap - Types",
