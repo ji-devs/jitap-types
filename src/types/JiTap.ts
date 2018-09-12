@@ -143,6 +143,8 @@ export module JiTap {
         position: Point;
         scale: number;
         rotation: number;
+        nativeWidth: number;
+        nativeHeight : number;
     }
     
     export enum ImageAssetSourceType {
