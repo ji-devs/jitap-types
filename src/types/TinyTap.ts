@@ -34,11 +34,6 @@ export module TinyTap {
         }
     }
 
-    export enum ShuffleType {
-        NO_SHUFFLE = 0,
-        ALL_SLIDES = 1,
-        MIDDLE = 2 //all except first and last
-    }
 
     export interface Slide {
         //relative path in bucket for slide
@@ -62,15 +57,6 @@ export module TinyTap {
         activities: Array<Activity>;
     }
    
-    export enum EngineType {
-        NONE = 'S',
-        SAY_SOMETHING = 'R', //(reading)
-        SOUNDBOARD = 'A',
-        VIDEO = 'V',
-        PUZZLE = 'P',
-        QUESTIONS = 'Q',
-        TALK_TYPE = 'T'
-    }
 
     //All layer filenames go in ${filePath}/layers/
     export type Layer = 
@@ -91,12 +77,6 @@ export module TinyTap {
             info: string; //HTML string
         }
    
-    export enum LayerType {
-        BG = "bg",
-        ANIM = "anim",
-        IMAGE = "img",
-        TEXT = "txt",
-    }
 
     export interface CommonLayer {
         frame: FrameString;
@@ -115,18 +95,6 @@ export module TinyTap {
         interactiveToggleShow: boolean; 
     }
    
-    export enum InteractiveLoopType {
-        PLAY_ON_LOAD = 0,
-        PLAY_ON_TAP_AND_LOOP = 1,
-        PLAY_ON_TAP_AND_STOP = 2,
-        PLAY_ON_LOAD_ONCE = 3
-    }
-
-    export enum InteractiveShowType {
-        SHOW_ON_LOAD = 0,
-        HIDE_ON_TAP = 1,
-        SHOW_ON_TAP = 2
-    }
 
    
 
@@ -204,10 +172,46 @@ export module TinyTap {
         
     }
     
+    export enum EngineType {
+        NONE = 'S',
+        SAY_SOMETHING = 'R', //(reading)
+        SOUNDBOARD = 'A',
+        VIDEO = 'V',
+        PUZZLE = 'P',
+        QUESTIONS = 'Q',
+        TALK_TYPE = 'T'
+    }
+
+    export enum LayerType {
+        BG = "bg",
+        ANIM = "anim",
+        IMAGE = "img",
+        TEXT = "txt",
+    }
+
     export enum PuzzleShapeTheme {
         THREE_D = 0,
         FLAT = 1,
         WOODEN = 2
+    }
+
+    export enum InteractiveLoopType {
+        PLAY_ON_LOAD = 0,
+        PLAY_ON_TAP_AND_LOOP = 1,
+        PLAY_ON_TAP_AND_STOP = 2,
+        PLAY_ON_LOAD_ONCE = 3
+    }
+
+    export enum InteractiveShowType {
+        SHOW_ON_LOAD = 0,
+        HIDE_ON_TAP = 1,
+        SHOW_ON_TAP = 2
+    }
+
+    export enum ShuffleType {
+        NO_SHUFFLE = 0,
+        ALL_SLIDES = 1,
+        MIDDLE = 2 //all except first and last
     }
 
     export interface CommonActivitySettings {
