@@ -1,8 +1,13 @@
 export module TinyTap {
+
+    export interface PublishedGame extends Game {
+        //TODO, maybe - mix in album etc.
+    }
+
     export interface Game {
         //base_url - the base url of the amazon bucket
-        baseUrl:string; //ex. https://df28ufcn2a3do.cloudfront.net/586D81B3-0D0F-4D1E-9DA0-B3252E32C09D/unzipped/
-    
+        base_url:string; //ex. https://df28ufcn2a3do.cloudfront.net/586D81B3-0D0F-4D1E-9DA0-B3252E32C09D/unzipped/
+
         structure: {
             //Game ID
             pk: PrimaryKey; //ex. 1612
@@ -75,18 +80,16 @@ export module TinyTap {
         //More differentiation happens per-shape as well
         settings: CommonActivitySettings | ActivitySettings;
        
-        shapes: Array<
-    
-            {
-                filePathThumb: string; //example: "photo1/activity0/shape1/shapeImg.jpg",
-                settings: CommonShapeSettings | ShapeSettings;
-                filePathRecording2: string; //Wrong answer in questions 
-                filePathRecording1: string; //Correct answer in questions
-                pk: PrimaryKey;
-                pathData: PathDataString;  
-            }
-        >;
-        
+        shapes: Array<Shape>;
+    }
+
+    export interface Shape {
+        filePathThumb: string; //example: "photo1/activity0/shape1/shapeImg.jpg",
+        settings: CommonShapeSettings | ShapeSettings;
+        filePathRecording2: string; //Wrong answer in questions 
+        filePathRecording1: string; //Correct answer in questions
+        pk: PrimaryKey;
+        pathData: PathDataString;  
     }
    
     //Game sub-types
