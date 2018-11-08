@@ -1,4 +1,19 @@
+import * as $ from 'sanctuary-def';
+
 export module JiTap {
+
+    export const Game = $.RecordType({
+        id: $.String,
+        title: $.String,
+        slideIds: $.Array($.String)
+    })
+
+    export interface Game {
+        id?: string;
+        title: string;
+        slideIds: Array<string>;
+    }
+
     export interface Slide {
         design:Design;
         activity?:Activity;
