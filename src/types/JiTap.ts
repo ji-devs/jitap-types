@@ -1,18 +1,14 @@
-import * as $ from 'sanctuary-def';
+import * as t from 'io-ts';
 
 export module JiTap {
 
-    export const Game = $.RecordType({
-        id: $.String,
-        title: $.String,
-        slideIds: $.Array($.String)
-    })
+    export const Game = t.interface({
+        id: t.string,
+        title: t.string,
+        slideIds: t.array(t.string)
+    }) 
 
-    export interface Game {
-        id?: string;
-        title: string;
-        slideIds: Array<string>;
-    }
+    export interface Game extends t.TypeOf<typeof Game> {}
 
     export interface Slide {
         design:Design;
