@@ -8,7 +8,10 @@ import * as t from 'io-ts';
 export module Service {
     export const KeepAlive = {
         endpoint: "keep-alive",
-        response: t.string
+        response: t.interface({
+            old: t.number,
+            curr: t.number
+        })
     }
 
     export const PingPong = {
