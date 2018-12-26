@@ -86,6 +86,23 @@ export module Service {
         response: t.string
     }
 
+    export const DeleteGame = {
+        endpoint: "delete-game",
+        request: t.interface({
+            userId: t.string,
+            gameId: t.string,
+        }),
+    }
+
+    export const DuplicateGame = {
+        endpoint: "duplicate-game",
+        request: t.interface({
+            userId: t.string,
+            gameId: t.string,
+        }),
+        response: t.string
+    }
+
     export const CreateSlide = {
         endpoint: "create-slide",
         request: t.interface({
@@ -93,6 +110,25 @@ export module Service {
             gameId: t.string,
         }),
         response: t.string 
+    }
+
+    export const DeleteSlide = {
+        endpoint: "delete-slide",
+        request: t.interface({
+            userId: t.string,
+            gameId: t.string,
+            slideId: t.string,
+        }),
+    }
+
+    export const DuplicateSlide= {
+        endpoint: "duplicate-slide",
+        request: t.interface({
+            userId: t.string,
+            gameId: t.string,
+            slideId: t.string,
+        }),
+        response: t.string
     }
 
     export const ListGames = {
