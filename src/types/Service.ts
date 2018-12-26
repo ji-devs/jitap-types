@@ -190,12 +190,30 @@ export module Service {
         Response: t.TypeOf<typeof CreateGame.response>;
     }
 
+    export interface DeleteGame {
+        Request: t.TypeOf<typeof DeleteGame.request>;
+        Response?: null; 
+    }
+
+    export interface DuplicateGame {
+        Request: t.TypeOf<typeof DuplicateGame.request>;
+        Response: t.TypeOf<typeof DuplicateGame.response>;
+    }
 
     export interface CreateSlide {
         Request: t.TypeOf<typeof CreateSlide.request>;
         Response: t.TypeOf<typeof CreateSlide.response>;
     }
 
+    export interface DeleteSlide {
+        Request: t.TypeOf<typeof DeleteSlide.request>;
+        Response?: null; 
+    }
+
+    export interface DuplicateSlide {
+        Request: t.TypeOf<typeof DuplicateSlide.request>;
+        Response: t.TypeOf<typeof DuplicateSlide.response>;
+    }
 
     export interface ListGames {
         Request: t.TypeOf<typeof ListGames.request>;
