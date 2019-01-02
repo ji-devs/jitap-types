@@ -131,6 +131,17 @@ export module Service {
         response: t.string
     }
 
+    export const ReorderSlides = {
+        endpoint: "reorder-slides",
+        request: t.interface({
+            userId: t.string,
+            gameId: t.string,
+            oldIndex: t.number,
+            newIndex: t.number,
+        }),
+        response: t.array(t.string)
+    }
+
     export const ListGames = {
         endpoint: "list-games",
         request: t.interface({
@@ -213,6 +224,11 @@ export module Service {
     export interface DuplicateSlide {
         Request: t.TypeOf<typeof DuplicateSlide.request>;
         Response: t.TypeOf<typeof DuplicateSlide.response>;
+    }
+
+    export interface ReorderSlides {
+        Request: t.TypeOf<typeof ReorderSlides.request>;
+        Response: t.TypeOf<typeof ReorderSlides.response>;
     }
 
     export interface ListGames {
