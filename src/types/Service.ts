@@ -136,8 +136,8 @@ export module Service {
         request: t.interface({
             userId: t.string,
             gameId: t.string,
-            oldIndex: t.number,
-            newIndex: t.number,
+            oldIndex: t.string,
+            newIndex: t.string,
         }),
         response: t.array(t.string)
     }
