@@ -99,6 +99,7 @@ export module Service {
         request: t.interface({
             userId: t.string,
             gameId: t.string,
+            title: t.string,
         }),
         response: t.string
     }
