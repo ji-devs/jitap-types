@@ -3,7 +3,7 @@ import { TinyTap } from "./TinyTap";
 
 import * as t from 'io-ts';
 
-//Typescript exports are all below and automatic from io-ts definitions
+//REMEMBER TO CREATE BOTH THE OBJECT AND THE INTERFACE!
 
 export module Service {
     export const KeepAlive = {
@@ -192,6 +192,10 @@ export module Service {
     export interface CopyUrl {
         Request: t.TypeOf<typeof CopyUrl.request>;
         Response: t.TypeOf<typeof CopyUrl.response>;
+    }
+    export interface QueueScreenshot {
+        Request: t.TypeOf<typeof QueueScreenshot.request>;
+        Response?: null; 
     }
     export interface MakeScreenshot {
         Request: t.TypeOf<typeof MakeScreenshot.request>;
