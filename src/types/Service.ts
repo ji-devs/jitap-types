@@ -16,7 +16,7 @@ export module Service {
 
     export const PingPong = {
         endpoint: "ping",
-        request: t.interface({
+        query: t.interface({
             value: t.string
         }),
         response: t.interface({
@@ -26,7 +26,7 @@ export module Service {
 
     export const GetUploadJwt = {
         endpoint: "get-upload-jwt",
-        request: t.interface({
+        query: t.interface({
             userId: t.string,
             gameId: t.string,
             slideId: t.string
@@ -37,7 +37,7 @@ export module Service {
 
     export const GetSignedUrl = {
         endpoint: "get-signed-url",
-        request: t.partial({
+        query: t.partial({
             uploadJwt: t.string, //really required, but blank is invalid anyway
             contentType: t.string,
             contentMd5: t.string,
@@ -52,7 +52,7 @@ export module Service {
 
     export const CopyUrl = {
         endpoint: "copy-url",
-        request: t.interface({ 
+        query: t.interface({ 
             uploadJwt: t.string,
             url: t.string,
         }),
@@ -63,14 +63,14 @@ export module Service {
 
     export const QueueScreenshot = {
         endpoint: "queue-screenshot",
-        request: t.interface({
+        query: t.interface({
             uploadJwt: t.string,
         }),
     }
 
     export const MakeScreenshot = {
         endpoint: "make-screenshot",
-        request: t.interface({
+        body: t.interface({
             uploadJwt: t.string,
         }),
         response: t.string 
@@ -78,7 +78,7 @@ export module Service {
 
     export const GetPlayerMeta = {
         endpoint: "get-player-meta",
-        request: t.interface({
+        query: t.interface({
             payload: t.string,
         }),
         //response - only at compiletime 
@@ -86,7 +86,7 @@ export module Service {
 
     export const CreateGame = {
         endpoint: "create-game",
-        request: t.interface({
+        query: t.interface({
             userId: t.string,
             title: t.string,
         }),
@@ -95,7 +95,7 @@ export module Service {
 
     export const DeleteGame = {
         endpoint: "delete-game",
-        request: t.interface({
+        query: t.interface({
             userId: t.string,
             gameId: t.string,
         }),
@@ -103,7 +103,7 @@ export module Service {
 
     export const DuplicateGame = {
         endpoint: "duplicate-game",
-        request: t.interface({
+        query: t.interface({
             userId: t.string,
             gameId: t.string,
             title: t.string,
@@ -113,7 +113,7 @@ export module Service {
 
     export const CreateSlide = {
         endpoint: "create-slide",
-        request: t.interface({
+        query: t.interface({
             userId: t.string,
             gameId: t.string,
         }),
@@ -122,7 +122,7 @@ export module Service {
 
     export const DeleteSlide = {
         endpoint: "delete-slide",
-        request: t.interface({
+        query: t.interface({
             userId: t.string,
             gameId: t.string,
             slideId: t.string,
@@ -131,7 +131,7 @@ export module Service {
 
     export const DuplicateSlide= {
         endpoint: "duplicate-slide",
-        request: t.interface({
+        query: t.interface({
             userId: t.string,
             gameId: t.string,
             slideId: t.string,
@@ -141,7 +141,7 @@ export module Service {
 
     export const ReorderSlides = {
         endpoint: "reorder-slides",
-        request: t.interface({
+        query: t.interface({
             userId: t.string,
             gameId: t.string,
             oldIndex: t.string,
@@ -152,7 +152,7 @@ export module Service {
 
     export const ListGames = {
         endpoint: "list-games",
-        request: t.interface({
+        query: t.interface({
             userId: t.string,
         }),
         response: t.array(JiTap.Game)
@@ -160,7 +160,7 @@ export module Service {
 
     export const GetGame = {
         endpoint: "get-game",
-        request: t.interface({
+        query: t.interface({
             userId: t.string,
             gameId: t.string,
         }),
@@ -169,7 +169,7 @@ export module Service {
 
     export const UpdateGameTitle = {
         endpoint: "update-game-title",
-        request: t.interface({
+        query: t.interface({
             userId: t.string,
             gameId: t.string,
             title: t.string,
@@ -177,89 +177,107 @@ export module Service {
     }
 
     export interface PingPong {
-        Request: t.TypeOf<typeof PingPong.request>;
+        Query: t.TypeOf<typeof PingPong.query>;
+        Body?: null; 
         Response: t.TypeOf<typeof PingPong.response>;
     }
 
     export interface GetUploadJwt {
-        Request: t.TypeOf<typeof GetUploadJwt.request>;
+        Query: t.TypeOf<typeof GetUploadJwt.query>;
+        Body?: null; 
         Response: t.TypeOf<typeof GetUploadJwt.response>;
     }
     export interface GetSignedUrl {
-        Request: t.TypeOf<typeof GetSignedUrl.request>;
+        Query: t.TypeOf<typeof GetSignedUrl.query>;
+        Body?: null; 
         Response: t.TypeOf<typeof GetSignedUrl.response>;
     }
     export interface CopyUrl {
-        Request: t.TypeOf<typeof CopyUrl.request>;
+        Query: t.TypeOf<typeof CopyUrl.query>;
+        Body?: null; 
         Response: t.TypeOf<typeof CopyUrl.response>;
     }
     export interface QueueScreenshot {
-        Request: t.TypeOf<typeof QueueScreenshot.request>;
+        Query: t.TypeOf<typeof QueueScreenshot.query>;
+        Body?: null; 
         Response?: null; 
     }
     export interface MakeScreenshot {
-        Request: t.TypeOf<typeof MakeScreenshot.request>;
+        query?: null; 
+        Body: t.TypeOf<typeof MakeScreenshot.body>;
         Response: t.TypeOf<typeof MakeScreenshot.response>;
     }
 
     export interface GetPlayerMeta {
-        Request: t.TypeOf<typeof GetPlayerMeta.request>;
+        Query: t.TypeOf<typeof GetPlayerMeta.query>;
+        Body?: null; 
         Response: TinyTap.Game 
     }
 
 
     export interface CreateGame {
-        Request: t.TypeOf<typeof CreateGame.request>;
+        Query: t.TypeOf<typeof CreateGame.query>;
+        Body?: null; 
         Response: t.TypeOf<typeof CreateGame.response>;
     }
 
     export interface DeleteGame {
-        Request: t.TypeOf<typeof DeleteGame.request>;
+        Query: t.TypeOf<typeof DeleteGame.query>;
+        Body?: null; 
         Response?: null; 
     }
 
     export interface DuplicateGame {
-        Request: t.TypeOf<typeof DuplicateGame.request>;
+        Query: t.TypeOf<typeof DuplicateGame.query>;
+        Body?: null; 
         Response: t.TypeOf<typeof DuplicateGame.response>;
     }
 
     export interface CreateSlide {
-        Request: t.TypeOf<typeof CreateSlide.request>;
+        Query: t.TypeOf<typeof CreateSlide.query>;
+        Body?: null; 
         Response: t.TypeOf<typeof CreateSlide.response>;
     }
 
     export interface DeleteSlide {
-        Request: t.TypeOf<typeof DeleteSlide.request>;
+        Query: t.TypeOf<typeof DeleteSlide.query>;
+        Body?: null; 
         Response?: null; 
     }
 
     export interface DuplicateSlide {
-        Request: t.TypeOf<typeof DuplicateSlide.request>;
+        Query: t.TypeOf<typeof DuplicateSlide.query>;
+        Body?: null; 
         Response: t.TypeOf<typeof DuplicateSlide.response>;
     }
 
     export interface ReorderSlides {
-        Request: t.TypeOf<typeof ReorderSlides.request>;
+        Query: t.TypeOf<typeof ReorderSlides.query>;
+        Body?: null; 
         Response: t.TypeOf<typeof ReorderSlides.response>;
     }
 
     export interface ListGames {
-        Request: t.TypeOf<typeof ListGames.request>;
+        Query: t.TypeOf<typeof ListGames.query>;
+        Body?: null; 
         Response: t.TypeOf<typeof ListGames.response>;
     }
 
 
     export interface GetGame {
-        Request: t.TypeOf<typeof GetGame.request>;
+        Query: t.TypeOf<typeof GetGame.query>;
+        Body?: null; 
         Response: t.TypeOf<typeof GetGame.response>;
     }
 
     export interface UpdateGameTitle {
-        Request: t.TypeOf<typeof UpdateGameTitle.request>;
+        Query: t.TypeOf<typeof UpdateGameTitle.query>;
+        Body?: null; 
         Response?: null; 
     }
     export interface KeepAlive {
-        Request?: null; 
+        Query?: null; 
+        Body?: null; 
         Response: t.TypeOf<typeof KeepAlive.response>;
     }
 }
