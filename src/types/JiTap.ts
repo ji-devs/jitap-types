@@ -163,10 +163,6 @@ export module JiTap {
         HTML = 1
     }
     
-    export interface ImageAssetTextSource {
-        html: string;
-    }
-    
     //TRACE
     
     export interface Trace_Rectangle {

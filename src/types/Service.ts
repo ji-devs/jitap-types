@@ -61,6 +61,13 @@ export module Service {
     }
 
 
+    export const QueueScreenshot = {
+        endpoint: "queue-screenshot",
+        request: t.interface({
+            uploadJwt: t.string,
+        }),
+    }
+
     export const MakeScreenshot = {
         endpoint: "make-screenshot",
         request: t.interface({
