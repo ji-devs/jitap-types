@@ -70,7 +70,12 @@ export module Service {
 
     export const MakeScreenshot = {
         endpoint: "make-screenshot",
-        body: t.interface({
+        response: t.string 
+    }
+
+    export const MakeScreenshotTest = {
+        endpoint: "make-screenshot-test",
+        query: t.interface({
             uploadJwt: t.string,
         }),
         response: t.string 
@@ -203,9 +208,15 @@ export module Service {
         Response?: null; 
     }
     export interface MakeScreenshot {
-        query?: null; 
-        Body: t.TypeOf<typeof MakeScreenshot.body>;
+        Query?: null; 
+        Body?: null; 
         Response: t.TypeOf<typeof MakeScreenshot.response>;
+    }
+
+    export interface MakeScreenshotTest {
+        Query: t.TypeOf<typeof MakeScreenshotTest.query>;
+        Body?: null; 
+        Response: t.TypeOf<typeof MakeScreenshotTest.response>;
     }
 
     export interface GetPlayerMeta {
