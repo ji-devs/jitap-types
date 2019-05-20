@@ -80,17 +80,7 @@ export module Service {
 
     export const QueuePublishGame = {
         endpoint: "queue-publish-game",
-        query: t.interface({
-                old_token: t.string, 
-                new_token: t.string,
-                title: t.string,
-                description: t.string,
-                isPublic: t.boolean,
-                isEditable: t.boolean,
-                categoryId: t.number,
-                ageId: t.number,
-                languageId: t.number
-        }),
+        query: t.string    
     }
 
     export const GetPlayerMeta = {
