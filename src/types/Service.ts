@@ -78,6 +78,20 @@ export module Service {
         }),
     }
 
+    export const QueuePublishGame = {
+        endpoint: "queue-publish-game",
+        query: t.interface({
+                old_token: t.string, 
+                new_token: t.string,
+                title: t.string,
+                description: t.string,
+                isPublic: t.boolean,
+                isEditable: t.boolean,
+                categoryId: t.number,
+                ageId: t.number,
+                languageId: t.number
+        }),
+    }
 
     export const GetPlayerMeta = {
         endpoint: "get-player-meta",
@@ -205,6 +219,14 @@ export module Service {
         Body?: null; 
         Response?: null; 
     }
+
+
+    export interface QueuePublishGame {
+        Query: t.TypeOf<typeof QueuePublishGame.query>;
+        Body?: null; 
+        Response?: null; 
+    }
+
     export interface Publish {
         Query: t.TypeOf<typeof Publish.query>;
         Body?: null; 
