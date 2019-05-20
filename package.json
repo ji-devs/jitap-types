@@ -2,7 +2,7 @@
   "name": "jitap-types",
   "main": "dist/lib.cjs.js",
   "module": "dist/lib.esm.js",
-  "version": "0.9.0",
+  "version": "2.0.0",
   "typings": "./dist/typings/Lib.d.ts",
   "description": "JiTap - Types",
   "scripts": {
@@ -11,10 +11,8 @@
     "build:dev": "npm-run-all clean rollup:build typings:emit",
     "bundle": "npm-run-all build:dev",
     "watch": "chokidar \"src/**/*.ts\" -c \"npm run build:dev\"",
-
     "rollup:build": "cross-env NODE_ENV=production rollup -c",
     "typings:emit": "tsc --emitDeclarationOnly true",
-
     "//": "Sorry! Don't remember why I had to do this... but too afraid to remove it ;)",
     "dev:postfix": "npm run build:dev:postfix && npm run watch:postfix",
     "build:dev:postfix": "npm-run-all clean rollup:build typings:emit post:fix",
@@ -24,7 +22,6 @@
     "post:fix:2": "replace \"interʘ‿ʘ,\" \"interface as interʘ‿ʘ,\" dist/lib.esm.js",
     "post:fix:3": "replace \"interface\" \"interʘ‿ʘ\" dist/lib.esm.js.map",
     "post:fix:4": "replace \"interʘ‿ʘ,\" \"interface as interʘ‿ʘ,\" dist/lib.esm.js.map",
-
     "schemas": "mkdirp ./dist/schemas && npm-run-all schema:tt schema:ji",
     "schema:tt": "typescript-json-schema --ignoreErrors './dist/typings/types/TinyTap.d.ts' TinyTap.Game > ./dist/schemas/TinyTap.schema.json",
     "schema:ji": "typescript-json-schema --ignoreErrors './dist/typings/types/JiTap.d.ts' JiTap.Slide > ./dist/schemas/JiTap.schema.json"

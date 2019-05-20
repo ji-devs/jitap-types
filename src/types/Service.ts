@@ -14,6 +14,16 @@ export module Service {
         })
     }
 
+    export const Publish = {
+        endpoint: "ping",
+        query: t.interface({
+            sessionJwt: t.string,
+            old: t.string,
+            new: t.string
+        }),
+        response: t.string
+    }
+
     export const PingPong = {
         endpoint: "ping",
         query: t.interface({
@@ -24,7 +34,7 @@ export module Service {
         }),
     }
 
-    export const GetUploadJwt = {
+    export const GetSessionJwt = {
         endpoint: "get-upload-jwt",
         query: t.interface({
             userId: t.string,
@@ -38,7 +48,7 @@ export module Service {
     export const GetSignedUrl = {
         endpoint: "get-signed-url",
         query: t.partial({
-            uploadJwt: t.string, //really required, but blank is invalid anyway
+            sessionJwt: t.string, //really required, but blank is invalid anyway
             contentType: t.string,
             contentMd5: t.string,
             filename: t.string 
@@ -53,7 +63,7 @@ export module Service {
     export const CopyUrl = {
         endpoint: "copy-url",
         query: t.interface({ 
-            uploadJwt: t.string,
+            sessionJwt: t.string,
             url: t.string,
         }),
 
@@ -64,22 +74,10 @@ export module Service {
     export const QueueScreenshot = {
         endpoint: "queue-screenshot",
         query: t.interface({
-            uploadJwt: t.string,
+            sessionJwt: t.string,
         }),
     }
 
-    export const MakeScreenshot = {
-        endpoint: "make-screenshot",
-        response: t.string 
-    }
-
-    export const MakeScreenshotTest = {
-        endpoint: "make-screenshot-test",
-        query: t.interface({
-            uploadJwt: t.string,
-        }),
-        response: t.string 
-    }
 
     export const GetPlayerMeta = {
         endpoint: "get-player-meta",
@@ -187,10 +185,10 @@ export module Service {
         Response: t.TypeOf<typeof PingPong.response>;
     }
 
-    export interface GetUploadJwt {
-        Query: t.TypeOf<typeof GetUploadJwt.query>;
+    export interface GetSessionJwt {
+        Query: t.TypeOf<typeof GetSessionJwt.query>;
         Body?: null; 
-        Response: t.TypeOf<typeof GetUploadJwt.response>;
+        Response: t.TypeOf<typeof GetSessionJwt.response>;
     }
     export interface GetSignedUrl {
         Query: t.TypeOf<typeof GetSignedUrl.query>;
@@ -207,16 +205,10 @@ export module Service {
         Body?: null; 
         Response?: null; 
     }
-    export interface MakeScreenshot {
-        Query?: null; 
+    export interface Publish {
+        Query: t.TypeOf<typeof Publish.query>;
         Body?: null; 
-        Response: t.TypeOf<typeof MakeScreenshot.response>;
-    }
-
-    export interface MakeScreenshotTest {
-        Query: t.TypeOf<typeof MakeScreenshotTest.query>;
-        Body?: null; 
-        Response: t.TypeOf<typeof MakeScreenshotTest.response>;
+        Response: t.TypeOf<typeof Publish.response>;
     }
 
     export interface GetPlayerMeta {
