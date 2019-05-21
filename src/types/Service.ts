@@ -82,6 +82,7 @@ export module Service {
         endpoint: "queue-publish-game",
         query: t.interface({
             userId: t.string, 
+            gameId: t.string,
             old_token: t.string, 
             new_token: t.string, 
             title: t.string,
