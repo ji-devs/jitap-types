@@ -80,13 +80,26 @@ export module Service {
 
     export const QueuePublishGame = {
         endpoint: "queue-publish-game",
-        query: t.string    
+        query: t.interface({
+            userId: t.string, 
+            old_token: t.string, 
+            new_token: t.string, 
+            title: t.string,
+            description: t.string,
+            isPublic: t.boolean,
+            isEditable: t.boolean,
+            categoryId: t.number,
+            ageId: t.number,
+            languageId: t.number,
+        })
     }
 
     export const GetPlayerMeta = {
         endpoint: "get-player-meta",
         query: t.interface({
-            payload: t.string,
+            userId: t.string,
+            gameId: t.string,
+            slideId: t.string
         }),
         //response - only at compiletime 
     }
@@ -224,7 +237,7 @@ export module Service {
     }
 
     export interface GetPlayerMeta {
-        Query: t.TypeOf<typeof GetPlayerMeta.query>;
+        Query?: t.TypeOf<typeof GetPlayerMeta.query>;
         Body?: null; 
         Response: TinyTap.Game 
     }

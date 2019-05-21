@@ -2,7 +2,7 @@
   "name": "jitap-types",
   "main": "dist/lib.cjs.js",
   "module": "dist/lib.esm.js",
-  "version": "2.2.0",
+  "version": "3.0.0",
   "typings": "./dist/typings/Lib.d.ts",
   "description": "JiTap - Types",
   "scripts": {
