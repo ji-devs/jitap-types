@@ -83,6 +83,7 @@ export module Service {
         query: t.interface({
             userId: t.string, 
             gameId: t.string,
+            userToken: t.string, 
             old_token: t.string, 
             new_token: t.string, 
             title: t.string,
