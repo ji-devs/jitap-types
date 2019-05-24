@@ -166,16 +166,23 @@ export module JiTap {
     //TRACE
     
     export interface Trace_Rectangle {
-        kind: TraceKind; 
+        kind: TraceKind.Rectangle; 
         startPoint: Point;
         endPoint: Point;
     }
     
+    export interface Trace_Path {
+        kind: TraceKind.Path; 
+        startPoint: Point;
+        points: Array<Point>;
+        endPoint: Point;
+    }
     export enum TraceKind {
-        Rectangle = 0 
+        Rectangle = 0,
+        Path = 1
     }
     
-    export type Trace = Trace_Rectangle
+    export type Trace = Trace_Rectangle | Trace_Path;
     
     //POINT
     export interface Point {
