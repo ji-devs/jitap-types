@@ -178,9 +178,7 @@ export module JiTap {
 
     export interface Trace_Curves {
         kind: TraceKind.Curves; 
-        startPoint: Point;
-        controlledPoints: Array<{c1: Point, c2: Point, point: Point}>;
-        remainingPoints: Array<Point>;
+        points: Array<CurvePoint>;
     }
 
     export enum TraceKind {
@@ -195,5 +193,11 @@ export module JiTap {
     export interface Point {
         x: number;
         y: number; 
+    }
+    export interface CurvePoint extends Point {
+        c1x: number;
+        c1y: number;
+        c2x: number;
+        c2y: number;
     }
 }
