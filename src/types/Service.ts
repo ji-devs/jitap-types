@@ -176,6 +176,8 @@ export module Service {
         endpoint: "list-games",
         query: t.interface({
             userId: t.string,
+            sortBy: t.string,
+            sortDir: t.string
         }),
         response: t.array(JiTap.Game)
     }
