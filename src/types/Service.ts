@@ -189,6 +189,15 @@ export module Service {
         response: JiTap.Game 
     }
 
+    export const GameModified = {
+        endpoint: "game-modified",
+        query: t.interface({
+            userId: t.string,
+            gameId: t.string,
+        }),
+        response: t.number 
+    }
+
     export const UpdateGameTitle = {
         endpoint: "update-game-title",
         query: t.interface({
@@ -224,7 +233,6 @@ export module Service {
         Body?: null; 
         Response?: null; 
     }
-
 
     export interface QueuePublishGame {
         Query: t.TypeOf<typeof QueuePublishGame.query>;
@@ -293,11 +301,16 @@ export module Service {
         Response: t.TypeOf<typeof ListGames.response>;
     }
 
-
     export interface GetGame {
         Query: t.TypeOf<typeof GetGame.query>;
         Body?: null; 
         Response: t.TypeOf<typeof GetGame.response>;
+    }
+
+    export interface GameModified {
+        Query: t.TypeOf<typeof GameModified.query>;
+        Body?: null; 
+        Response: t.TypeOf<typeof GameModified.response>;
     }
 
     export interface UpdateGameTitle {
