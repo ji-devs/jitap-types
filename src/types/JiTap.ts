@@ -5,7 +5,9 @@ export module JiTap {
     export const Game = t.interface({
         id: t.string,
         title: t.string,
-        slideIds: t.array(t.string)
+        slideIds: t.array(t.string),
+        createdTime: t.number,
+        lastModifiedTime: t.number
     }) 
 
     export interface Game extends t.TypeOf<typeof Game> {}
