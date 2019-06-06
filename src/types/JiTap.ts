@@ -2,14 +2,19 @@ import * as t from 'io-ts';
 
 export module JiTap {
 
+    export const SlideInfo = t.interface({
+        id: t.string,
+        isHidden: t.boolean
+    });
+    export interface SlideInfo extends t.TypeOf<typeof SlideInfo> {}
+
     export const Game = t.interface({
         id: t.string,
         title: t.string,
-        slideIds: t.array(t.string),
+        slideInfos: t.array(SlideInfo),
         createdTime: t.number,
         lastModifiedTime: t.number
-    }) 
-
+    });
     export interface Game extends t.TypeOf<typeof Game> {}
 
     export interface Slide {

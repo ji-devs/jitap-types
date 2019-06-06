@@ -151,6 +151,16 @@ export module Service {
         }),
     }
 
+    export const SetSlideHidden = {
+        endpoint: "set-slide-hidden",
+        query: t.interface({
+            userId: t.string,
+            gameId: t.string,
+            slideId: t.string,
+            isHidden: t.boolean
+        }),
+    }
+
     export const DuplicateSlide= {
         endpoint: "duplicate-slide",
         query: t.interface({
@@ -281,6 +291,12 @@ export module Service {
 
     export interface DeleteSlide {
         Query: t.TypeOf<typeof DeleteSlide.query>;
+        Body?: null; 
+        Response?: null; 
+    }
+
+    export interface SetSlideHidden {
+        Query: t.TypeOf<typeof SetSlideHidden.query>;
         Body?: null; 
         Response?: null; 
     }
