@@ -139,7 +139,7 @@ export module Service {
             userId: t.string,
             gameId: t.string,
         }),
-        response: t.string 
+        response: JiTap.SlideInfo 
     }
 
     export const DeleteSlide = {
@@ -168,7 +168,7 @@ export module Service {
             gameId: t.string,
             slideId: t.string,
         }),
-        response: t.string
+        response: JiTap.SlideInfo
     }
 
     export const ReorderSlides = {
@@ -179,7 +179,7 @@ export module Service {
             oldIndex: t.string,
             newIndex: t.string,
         }),
-        response: t.array(t.string)
+        response: t.array(JiTap.SlideInfo)
     }
 
     export const ListGames = {
