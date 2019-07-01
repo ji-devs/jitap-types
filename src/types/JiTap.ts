@@ -11,7 +11,7 @@ export module JiTap {
     export interface SlideInfo {
         id: string;
         isHidden: boolean;
-        activityKind: ActivityKind;
+        activityKind: ActivityKind | -1;
     }
 
     export const Game = t.interface({
