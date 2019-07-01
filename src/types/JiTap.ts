@@ -4,9 +4,15 @@ export module JiTap {
 
     export const SlideInfo = t.interface({
         id: t.string,
-        isHidden: t.boolean
+        isHidden: t.boolean,
+        activityKind: t.number,
     });
-    export interface SlideInfo extends t.TypeOf<typeof SlideInfo> {}
+
+    export interface SlideInfo {
+        id: string;
+        isHidden: boolean;
+        activityKind: ActivityKind;
+    }
 
     export const Game = t.interface({
         id: t.string,
