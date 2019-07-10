@@ -19,7 +19,8 @@ export module JiTap {
         title: t.string,
         slideInfos: t.array(SlideInfo),
         createdTime: t.number,
-        lastModifiedTime: t.number
+        lastModifiedTime: t.number,
+        lastPublishTime: t.number
     });
     export interface Game extends t.TypeOf<typeof Game> {}
 
