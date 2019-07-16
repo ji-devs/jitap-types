@@ -219,6 +219,14 @@ export module Service {
         response: t.number 
     }
 
+    export const PublishSuccess = {
+        endpoint: "publish-success",
+        query: t.interface({
+            userId: t.string,
+            gameId: t.string,
+        }),
+    }
+
     export const UpdateGameTitle = {
         endpoint: "update-game-title",
         query: t.interface({
@@ -265,6 +273,12 @@ export module Service {
         Query: t.TypeOf<typeof Publish.query>;
         Body?: null; 
         Response: t.TypeOf<typeof Publish.response>;
+    }
+
+    export interface PublishSuccess {
+        Query: t.TypeOf<typeof PublishSuccess.query>;
+        Body?: null; 
+        Response?: null;
     }
 
     export interface GetPlayerMeta {
