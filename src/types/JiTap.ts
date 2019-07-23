@@ -21,6 +21,8 @@ export module JiTap {
     export const Game = t.interface({
         //the unique id for the game
         id: t.string,
+        //this is needed for deriving a title for some reason. Whatever
+        originId: t.string,
         //if the game was copied from another, otherwise ""
         copiedFromId: t.string,
         //title if the user set one, otherwise ""
