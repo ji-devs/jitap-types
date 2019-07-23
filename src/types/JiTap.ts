@@ -35,7 +35,9 @@ export module JiTap {
     
     //DESIGN
     export interface Design {
+        //no reason for bg or fg to be an ImageAsset since they can't have transforms
         bg?:string;
+        fg?:string;
         stickers: Array<ImageAsset>;
     }
     
