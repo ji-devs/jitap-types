@@ -6,12 +6,16 @@ export module JiTap {
         id: t.string,
         isHidden: t.boolean,
         activityKind: t.number,
+        createdTime: t.number,
+        lastModifiedTime: t.number,
     });
 
     export interface SlideInfo {
         id: string;
         isHidden: boolean;
         activityKind: ActivityKind | -1;
+        createdTime: number;
+        lastModifiedTime: number;
     }
 
     export const Game = t.interface({
