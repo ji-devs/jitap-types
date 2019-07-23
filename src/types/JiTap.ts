@@ -19,12 +19,21 @@ export module JiTap {
     }
 
     export const Game = t.interface({
+        //the unique id for the game
         id: t.string,
+        //if the game was copied from another, otherwise ""
         copiedFromId: t.string,
+        //title if the user set one, otherwise ""
         title: t.string,
+        //the Nth game this user created
+        gameCount: t.number,
+        //Array of slide metadata
         slideInfos: t.array(SlideInfo),
+        //timestamp when this game was created
         createdTime: t.number,
+        //timestamp when this game was updated
         lastModifiedTime: t.number,
+        //timestamp when this game was published
         lastPublishTime: t.number
     });
 
