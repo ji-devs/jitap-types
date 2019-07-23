@@ -2,7 +2,7 @@
   "name": "jitap-types",
   "main": "dist/lib.cjs.js",
   "module": "dist/lib.esm.js",
-  "version": "15.0.0",
+  "version": "16.0.0",
   "typings": "./dist/typings/Lib.d.ts",
   "description": "JiTap - Types",
   "scripts": {
@@ -41,7 +41,7 @@
     "typescript-json-schema": "^0.38.3"
   },
   "dependencies": {
-    "fp-ts": "^2.0.2",
+    "fp-ts": "^2.0.3",
     "io-ts": "2.0.0"
   }
 }

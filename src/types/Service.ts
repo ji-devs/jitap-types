@@ -219,12 +219,23 @@ export module Service {
         response: t.number 
     }
 
-    export const PublishSuccess = {
-        endpoint: "publish-success",
+    export const SlideModified = {
+        endpoint: "slide-modified",
+        query: t.interface({
+            userId: t.string,
+            gameId: t.string,
+            slideId: t.string,
+        }),
+        response: t.number 
+    }
+
+    export const PublishModified = {
+        endpoint: "publish-modified",
         query: t.interface({
             userId: t.string,
             gameId: t.string,
         }),
+        response: t.number 
     }
 
     export const UpdateGameTitle = {
@@ -275,11 +286,6 @@ export module Service {
         Response: t.TypeOf<typeof Publish.response>;
     }
 
-    export interface PublishSuccess {
-        Query: t.TypeOf<typeof PublishSuccess.query>;
-        Body?: null; 
-        Response?: null;
-    }
 
     export interface GetPlayerMeta {
         Query?: t.TypeOf<typeof GetPlayerMeta.query>;
@@ -358,6 +364,17 @@ export module Service {
         Query: t.TypeOf<typeof GameModified.query>;
         Body?: null; 
         Response: t.TypeOf<typeof GameModified.response>;
+    }
+
+    export interface SlideModified {
+        Query: t.TypeOf<typeof SlideModified.query>;
+        Body?: null; 
+        Response: t.TypeOf<typeof SlideModified.response>;
+    }
+    export interface PublishModified {
+        Query: t.TypeOf<typeof PublishModified.query>;
+        Body?: null; 
+        Response: t.TypeOf<typeof PublishModified.response>;
     }
 
     export interface UpdateGameTitle {
