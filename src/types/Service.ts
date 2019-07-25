@@ -106,6 +106,15 @@ export module Service {
         //response - only at compiletime 
     }
 
+    export const GetPublishMeta = {
+        endpoint: "get-publish-meta",
+        query: t.interface({
+            userId: t.string,
+            gameId: t.string,
+        }),
+        //response - only at compiletime 
+    }
+
     export const CreateGame = {
         endpoint: "create-game",
         query: t.interface({
@@ -293,6 +302,11 @@ export module Service {
         Response: TinyTap.Game 
     }
 
+    export interface GetPublishMeta {
+        Query?: t.TypeOf<typeof GetPublishMeta.query>;
+        Body?: null; 
+        Response: any; 
+    }
 
     export interface CreateGame {
         Query: t.TypeOf<typeof CreateGame.query>;
