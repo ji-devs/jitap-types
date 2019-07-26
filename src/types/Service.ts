@@ -89,7 +89,9 @@ export module Service {
 
     export const PublishGame = {
         endpoint: "publish-game",
-        query: QueuePublishGame.query,
+        query: t.interface({
+            publishJwt: t.string,
+        }),
         response: t.interface({
             jsonUrl: t.string
         })
