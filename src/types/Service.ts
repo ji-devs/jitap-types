@@ -14,15 +14,6 @@ export module Service {
         })
     }
 
-    export const Publish = {
-        endpoint: "ping",
-        query: t.interface({
-            sessionJwt: t.string,
-            old: t.string,
-            new: t.string
-        }),
-        response: t.string
-    }
 
     export const PingPong = {
         endpoint: "ping",
@@ -93,6 +84,14 @@ export module Service {
             categoryId: t.number,
             ageId: t.number,
             languageId: t.number,
+        })
+    }
+
+    export const PublishGame = {
+        endpoint: "publish-game",
+        query: QueuePublishGame.query,
+        response: t.interface({
+            jsonUrl: t.string
         })
     }
 
@@ -289,10 +288,10 @@ export module Service {
         Response?: null; 
     }
 
-    export interface Publish {
-        Query: t.TypeOf<typeof Publish.query>;
+    export interface PublishGame {
+        Query: t.TypeOf<typeof PublishGame.query>;
         Body?: null; 
-        Response: t.TypeOf<typeof Publish.response>;
+        Response: t.TypeOf<typeof PublishGame.response>;
     }
 
 
