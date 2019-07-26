@@ -95,9 +95,7 @@ export module Service {
 
     export const PublishGame = {
         endpoint: "publish-game",
-        query: t.interface({
-            publishJwt: t.string,
-        }),
+        body: t.string,
         response: t.interface({
             jsonUrl: t.string
         })
@@ -297,8 +295,8 @@ export module Service {
     }
 
     export interface PublishGame {
-        Query: t.TypeOf<typeof PublishGame.query>;
-        Body?: null; 
+        Query?: null; 
+        Body: t.TypeOf<typeof PublishGame.body>;
         Response: t.TypeOf<typeof PublishGame.response>;
     }
 
