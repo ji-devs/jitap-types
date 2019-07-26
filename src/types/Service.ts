@@ -95,7 +95,9 @@ export module Service {
 
     export const PublishGame = {
         endpoint: "publish-game",
-        body: t.string,
+        body: t.interface({
+            publishJwt: t.string
+        }),
         response: t.interface({
             jsonUrl: t.string
         })
