@@ -67,6 +67,9 @@ export module Service {
         query: t.interface({
             sessionJwt: t.string,
         }),
+        response: t.interface({
+            screenshotJwt: t.string
+        })
     }
 
     export const QueuePublishGame = {
@@ -84,6 +87,9 @@ export module Service {
             categoryId: t.number,
             ageId: t.number,
             languageId: t.number,
+        }),
+        response: t.interface({
+            publishJwt: t.string
         })
     }
 
@@ -281,13 +287,13 @@ export module Service {
     export interface QueueScreenshot {
         Query: t.TypeOf<typeof QueueScreenshot.query>;
         Body?: null; 
-        Response?: null; 
+        Response: t.TypeOf<typeof QueueScreenshot.response>;
     }
 
     export interface QueuePublishGame {
         Query: t.TypeOf<typeof QueuePublishGame.query>;
         Body?: null; 
-        Response?: null; 
+        Response: t.TypeOf<typeof QueuePublishGame.response>;
     }
 
     export interface PublishGame {
