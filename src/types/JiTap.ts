@@ -8,14 +8,17 @@ export module JiTap {
         activityKind: t.number,
         createdTime: t.number,
         lastModifiedTime: t.number,
+        lastScreenshotTime: t.number,
     });
 
+    //Created manually due to activityKind union
     export interface SlideInfo {
         id: string;
         isHidden: boolean;
         activityKind: ActivityKind | -1;
         createdTime: number;
         lastModifiedTime: number;
+        lastScreenshotTime: number;
     }
 
     export const Game = t.interface({

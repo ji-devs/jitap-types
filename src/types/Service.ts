@@ -245,11 +245,21 @@ export module Service {
         response: t.number 
     }
 
-    export const PublishModified = {
-        endpoint: "publish-modified",
+    export const PublishSuccess = {
+        endpoint: "publish-success ",
         query: t.interface({
             userId: t.string,
             gameId: t.string,
+        }),
+        response: t.number 
+    }
+
+    export const UpdateScreenshotTimestamp = {
+        endpoint: "update-screenshot-timestamp",
+        query: t.interface({
+            userId: t.string,
+            gameId: t.string,
+            slideId: t.string,
         }),
         response: t.number 
     }
@@ -392,10 +402,16 @@ export module Service {
         Body?: null; 
         Response: t.TypeOf<typeof SlideModified.response>;
     }
-    export interface PublishModified {
-        Query: t.TypeOf<typeof PublishModified.query>;
+    export interface PublishSuccess {
+        Query: t.TypeOf<typeof PublishSuccess.query>;
         Body?: null; 
-        Response: t.TypeOf<typeof PublishModified.response>;
+        Response: t.TypeOf<typeof PublishSuccess.response>;
+    }
+
+    export interface UpdateScreenshotTimestamp {
+        Query: t.TypeOf<typeof UpdateScreenshotTimestamp.query>;
+        Body?: null; 
+        Response: t.TypeOf<typeof UpdateScreenshotTimestamp.response>;
     }
 
     export interface UpdateGameTitle {
