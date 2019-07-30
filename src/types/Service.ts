@@ -26,9 +26,9 @@ export module Service {
     }
 
     export const GetSessionJwt = {
-        endpoint: "get-upload-jwt",
+        endpoint: "get-session-jwt",
         query: t.interface({
-            userId: t.string,
+            userJwt: t.string,
             gameId: t.string,
             slideId: t.string
         }),
@@ -84,7 +84,7 @@ export module Service {
     export const QueuePublishGame = {
         endpoint: "queue-publish-game",
         query: t.interface({
-            userId: t.string, 
+            userJwt: t.string, 
             gameId: t.string,
             userToken: t.string, 
             old_token: t.string, 
@@ -115,7 +115,7 @@ export module Service {
     export const GetPlayerMeta = {
         endpoint: "get-player-meta",
         query: t.interface({
-            userId: t.string,
+            userJwt: t.string,
             gameId: t.string,
             slideId: t.string
         }),
@@ -125,7 +125,7 @@ export module Service {
     export const GetPublishMeta = {
         endpoint: "get-publish-meta",
         query: t.interface({
-            userId: t.string,
+            userJwt: t.string,
             gameId: t.string,
         }),
         //response - only at compiletime 
@@ -134,7 +134,7 @@ export module Service {
     export const CreateGame = {
         endpoint: "create-game",
         query: t.interface({
-            userId: t.string,
+            userJwt: t.string,
             title: t.string,
         }),
         response: t.string
@@ -143,7 +143,7 @@ export module Service {
     export const DeleteGame = {
         endpoint: "delete-game",
         query: t.interface({
-            userId: t.string,
+            userJwt: t.string,
             gameId: t.string,
         }),
     }
@@ -151,7 +151,7 @@ export module Service {
     export const DuplicateGame = {
         endpoint: "duplicate-game",
         query: t.interface({
-            userId: t.string,
+            userJwt: t.string,
             gameId: t.string,
             title: t.string,
         }),
@@ -161,7 +161,7 @@ export module Service {
     export const CreateSlide = {
         endpoint: "create-slide",
         query: t.interface({
-            userId: t.string,
+            userJwt: t.string,
             gameId: t.string,
         }),
         response: JiTap.SlideInfo 
@@ -170,7 +170,7 @@ export module Service {
     export const DeleteSlide = {
         endpoint: "delete-slide",
         query: t.interface({
-            userId: t.string,
+            userJwt: t.string,
             gameId: t.string,
             slideId: t.string,
         }),
@@ -179,7 +179,7 @@ export module Service {
     export const SetSlideHidden = {
         endpoint: "set-slide-hidden",
         query: t.interface({
-            userId: t.string,
+            userJwt: t.string,
             gameId: t.string,
             slideId: t.string,
             isHidden: t.boolean
@@ -189,7 +189,7 @@ export module Service {
     export const SetSlideActivity = {
         endpoint: "set-slide-activity",
         query: t.interface({
-            userId: t.string,
+            userJwt: t.string,
             gameId: t.string,
             slideId: t.string,
             activityKind: t.number
@@ -198,7 +198,7 @@ export module Service {
     export const DuplicateSlide= {
         endpoint: "duplicate-slide",
         query: t.interface({
-            userId: t.string,
+            userJwt: t.string,
             gameId: t.string,
             slideId: t.string,
         }),
@@ -208,7 +208,7 @@ export module Service {
     export const ReorderSlides = {
         endpoint: "reorder-slides",
         query: t.interface({
-            userId: t.string,
+            userJwt: t.string,
             gameId: t.string,
             oldIndex: t.string,
             newIndex: t.string,
@@ -219,7 +219,7 @@ export module Service {
     export const ListGames = {
         endpoint: "list-games",
         query: t.interface({
-            userId: t.string,
+            userJwt: t.string,
             sortBy: t.string,
             sortDir: t.string
         }),
@@ -229,7 +229,7 @@ export module Service {
     export const GetGame = {
         endpoint: "get-game",
         query: t.interface({
-            userId: t.string,
+            userJwt: t.string,
             gameId: t.string,
         }),
         response: JiTap.Game 
@@ -238,7 +238,7 @@ export module Service {
     export const GameModified = {
         endpoint: "game-modified",
         query: t.interface({
-            userId: t.string,
+            userJwt: t.string,
             gameId: t.string,
         }),
         response: t.number 
@@ -247,7 +247,7 @@ export module Service {
     export const SlideModified = {
         endpoint: "slide-modified",
         query: t.interface({
-            userId: t.string,
+            userJwt: t.string,
             gameId: t.string,
             slideId: t.string,
         }),
@@ -257,7 +257,7 @@ export module Service {
     export const PublishSuccess = {
         endpoint: "publish-success ",
         query: t.interface({
-            userId: t.string,
+            userJwt: t.string,
             gameId: t.string,
         }),
         response: t.number 
@@ -266,7 +266,7 @@ export module Service {
     export const UpdateScreenshotTimestamp = {
         endpoint: "update-screenshot-timestamp",
         query: t.interface({
-            userId: t.string,
+            userJwt: t.string,
             gameId: t.string,
             slideId: t.string,
         }),
@@ -276,7 +276,7 @@ export module Service {
     export const UpdateGameTitle = {
         endpoint: "update-game-title",
         query: t.interface({
-            userId: t.string,
+            userJwt: t.string,
             gameId: t.string,
             title: t.string,
         }),
