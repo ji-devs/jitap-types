@@ -255,7 +255,7 @@ export module Service {
     }
 
     export const PublishSuccess = {
-        endpoint: "publish-success ",
+        endpoint: "publish-success",
         query: t.interface({
             userId: t.string,
             gameId: t.string,
