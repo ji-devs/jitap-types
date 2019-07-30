@@ -36,6 +36,15 @@ export module Service {
         response: t.string 
     }
 
+    export const GetUserJwt = {
+        endpoint: "get-user-jwt",
+        query: t.interface({
+            userId: t.string,
+            token: t.string,
+        }),
+        response: t.string 
+    }
+
     export const GetSignedUrl = {
         endpoint: "get-signed-url",
         query: t.partial({
@@ -284,6 +293,13 @@ export module Service {
         Body?: null; 
         Response: t.TypeOf<typeof GetSessionJwt.response>;
     }
+
+    export interface GetUserJwt {
+        Query: t.TypeOf<typeof GetUserJwt.query>;
+        Body?: null; 
+        Response: t.TypeOf<typeof GetUserJwt.response>;
+    }
+
     export interface GetSignedUrl {
         Query: t.TypeOf<typeof GetSignedUrl.query>;
         Body?: null; 
