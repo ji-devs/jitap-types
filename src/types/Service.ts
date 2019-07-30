@@ -257,7 +257,7 @@ export module Service {
     export const PublishSuccess = {
         endpoint: "publish-success ",
         query: t.interface({
-            userJwt: t.string,
+            userId: t.string,
             gameId: t.string,
         }),
         response: t.number 
@@ -266,7 +266,7 @@ export module Service {
     export const UpdateScreenshotTimestamp = {
         endpoint: "update-screenshot-timestamp",
         query: t.interface({
-            userJwt: t.string,
+            userId: t.string,
             gameId: t.string,
             slideId: t.string,
         }),
