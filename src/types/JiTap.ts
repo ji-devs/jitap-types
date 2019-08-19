@@ -117,19 +117,19 @@ export module JiTap {
     export interface Activity_Puzzle {
         kind: ActivityKind.PUZZLE; 
         options: Puzzle_Options;
-        items: Array<Puzzle_Item>;
+        pieces: Array<Puzzle_Piece>;
     }
     
     export interface Puzzle_Options {
         jump?: string;
         audio?: string;
-        freePlay: boolean;
+        returnToOrigin: boolean;
         easyMode: boolean;
         disableHints: boolean;
         shapes3d: boolean;
     }
     
-    export interface Puzzle_Item {
+    export interface Puzzle_Piece {
         trace: Trace;
         audio?: string;
     }
