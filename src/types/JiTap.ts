@@ -131,6 +131,7 @@ export module JiTap {
     
     export interface Puzzle_Piece {
         trace: Trace;
+        moveOffset: Point;
         audio?: string;
     }
     
