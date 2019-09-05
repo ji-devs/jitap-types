@@ -273,6 +273,16 @@ export module Service {
         response: t.number 
     }
 
+    export const ScreenshotIsFresh = {
+        endpoint: "screenshot-is-fresh",
+        query: t.interface({
+            userId: t.string,
+            gameId: t.string,
+            slideId: t.string,
+        }),
+        response: t.boolean
+    }
+
     export const UpdateGameTitle = {
         endpoint: "update-game-title",
         query: t.interface({
@@ -428,6 +438,12 @@ export module Service {
         Query: t.TypeOf<typeof UpdateScreenshotTimestamp.query>;
         Body?: null; 
         Response: t.TypeOf<typeof UpdateScreenshotTimestamp.response>;
+    }
+
+    export interface ScreenshotIsFresh {
+        Query: t.TypeOf<typeof ScreenshotIsFresh.query>;
+        Body?: null; 
+        Response: t.TypeOf<typeof ScreenshotIsFresh.response>;
     }
 
     export interface UpdateGameTitle {
