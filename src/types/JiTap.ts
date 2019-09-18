@@ -202,39 +202,22 @@ export module JiTap {
     
     //TRACE
     
-    export interface Trace_Rectangle {
-        kind: TraceKind.Rectangle; 
-        startPoint: Point;
-        endPoint: Point;
-    }
-    
-    export interface Trace_Points {
+    export interface Trace {
         kind: TraceKind.Points; 
         points: Array<Point>;
     }
 
-    export interface Trace_Curves {
-        kind: TraceKind.Curves; 
-        points: Array<CurvePoint>;
-    }
 
     export enum TraceKind {
-        Rectangle = 0,
+        //only Points is supported - the enum is kept for backwards compatibility in data fetching
+        //Rectangle = 0,
         Points = 1,
-        Curves = 2
+        //Curves = 2
     }
-    
-    export type Trace = Trace_Rectangle | Trace_Points | Trace_Curves;
     
     //POINT
     export interface Point {
         x: number;
         y: number; 
-    }
-    export interface CurvePoint extends Point {
-        c1x: number;
-        c1y: number;
-        c2x: number;
-        c2y: number;
     }
 }
