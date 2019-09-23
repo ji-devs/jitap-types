@@ -226,6 +226,17 @@ export module Service {
         response: t.array(JiTap.Game)
     }
 
+    export const ListAllGames = {
+        endpoint: "list-all-games",
+        query: t.null,
+        response: t.array(
+            t.interface({
+                userId: t.string,
+                gameIds: t.array(t.string)
+            })
+        )
+    }
+
     export const GetGame = {
         endpoint: "get-game",
         query: t.interface({
@@ -409,6 +420,12 @@ export module Service {
         Query: t.TypeOf<typeof ListGames.query>;
         Body?: null; 
         Response: t.TypeOf<typeof ListGames.response>;
+    }
+
+    export interface ListAllGames {
+        Query: t.TypeOf<typeof ListAllGames.query>;
+        Body?: null; 
+        Response: t.TypeOf<typeof ListAllGames.response>;
     }
 
     export interface GetGame {
