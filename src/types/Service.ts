@@ -423,7 +423,7 @@ export module Service {
     }
 
     export interface ListAllGames {
-        Query: t.TypeOf<typeof ListAllGames.query>;
+        Query?: null; 
         Body?: null; 
         Response: t.TypeOf<typeof ListAllGames.response>;
     }
