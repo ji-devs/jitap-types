@@ -228,12 +228,24 @@ export module Service {
 
     export const ListAllGames = {
         endpoint: "list-all-games",
+        query: t.interface({
+            devToken: t.string
+        }),
         response: t.array(
             t.interface({
                 userId: t.string,
                 gameIds: t.array(t.string)
-            })
+            }),
         )
+    }
+
+    export const ListGameSlides = {
+        endpoint: "list-game-slides",
+        query: t.interface({
+            userId: t.string,
+            gameId: t.string,
+        }),
+        response: t.array(t.string)
     }
 
     export const GetGame = {
@@ -422,7 +434,7 @@ export module Service {
     }
 
     export interface ListAllGames {
-        Query?: null; 
+        Query: t.TypeOf<typeof ListAllGames.query>;
         Body?: null; 
         Response: t.TypeOf<typeof ListAllGames.response>;
     }
@@ -431,6 +443,12 @@ export module Service {
         Query: t.TypeOf<typeof GetGame.query>;
         Body?: null; 
         Response: t.TypeOf<typeof GetGame.response>;
+    }
+
+    export interface ListGameSlides {
+        Query: t.TypeOf<typeof ListGameSlides.query>;
+        Body?: null; 
+        Response: t.TypeOf<typeof ListGameSlides.response>;
     }
 
     export interface GameModified {
