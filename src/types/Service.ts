@@ -228,7 +228,6 @@ export module Service {
 
     export const ListAllGames = {
         endpoint: "list-all-games",
-        query: t.null,
         response: t.array(
             t.interface({
                 userId: t.string,
