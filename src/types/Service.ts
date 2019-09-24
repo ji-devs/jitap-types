@@ -239,13 +239,13 @@ export module Service {
         )
     }
 
-    export const ListGameSlides = {
-        endpoint: "list-game-slides",
+    export const GetGameDirect = {
+        endpoint: "get-game-direct",
         query: t.interface({
             userId: t.string,
             gameId: t.string,
         }),
-        response: t.array(t.string)
+        response: JiTap.Game 
     }
 
     export const GetGame = {
@@ -445,10 +445,10 @@ export module Service {
         Response: t.TypeOf<typeof GetGame.response>;
     }
 
-    export interface ListGameSlides {
-        Query: t.TypeOf<typeof ListGameSlides.query>;
+    export interface GetGameDirect {
+        Query: t.TypeOf<typeof GetGameDirect.query>;
         Body?: null; 
-        Response: t.TypeOf<typeof ListGameSlides.response>;
+        Response: t.TypeOf<typeof GetGameDirect.response>;
     }
 
     export interface GameModified {
