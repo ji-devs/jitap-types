@@ -131,7 +131,6 @@ export module JiTap {
     
     export interface Puzzle_Piece {
         trace: Trace;
-        moveOffset: Point;
         audio?: string;
     }
     
@@ -205,6 +204,7 @@ export module JiTap {
     export interface Trace {
         kind: TraceKind.Points; 
         points: Array<Point>;
+        moveOffset?: Point;
     }
 
 
