@@ -97,7 +97,7 @@ export module JiTap {
     export interface Activity_Soundboard {
         kind: ActivityKind.SOUNDBOARD; 
         options: Soundboard_Options;
-        items: Array<Soundboard_Item>;
+        pieces: Array<Soundboard_Piece>;
     }
     
     export interface Soundboard_Options {
@@ -107,7 +107,7 @@ export module JiTap {
         showHints: boolean;
     }
     
-    export interface Soundboard_Item {
+    export interface Soundboard_Piece {
         trace: Trace;
         audio?: string;
         jump?: string;
@@ -158,7 +158,7 @@ export module JiTap {
     export interface Activity_TalkType {
         kind: ActivityKind.TALK_TYPE; 
         options: TalkType_Options;
-        items: Array<TalkType_Item>;
+        pieces: Array<TalkType_Piece>;
     }
     
     export interface TalkType_Options {
@@ -168,7 +168,7 @@ export module JiTap {
     }
     
     
-    export interface TalkType_Item {
+    export interface TalkType_Piece {
         trace: Trace;
         audio?: string;
         answer: string;
