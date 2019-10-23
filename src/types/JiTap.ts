@@ -111,6 +111,7 @@ export module JiTap {
         trace: Trace;
         audio?: string;
         jump?: string;
+        label?: string;
     }
     
     //PUZZLE 
