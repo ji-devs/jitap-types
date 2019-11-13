@@ -170,6 +170,7 @@ export module TinyTap {
 
     export interface TalkType_Settings {
         soundShowToolTip: boolean;
+        linkToPage: number;
     }
     export interface Video_Settings{
         videoRange: VideoRangeString; 
@@ -203,7 +204,6 @@ export module TinyTap {
 
     export type SaySomething_Shape_Settings = {};
     export interface TalkType_Shape_Settings {
-        linkToPage: number;
         textAnswerArray: Array<string>;
         isUsingSpeakingMode: boolean;  
         //DEPRECATED textInputLanguage: string; //example: "en-US",
