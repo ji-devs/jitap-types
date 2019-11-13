@@ -117,7 +117,8 @@ export module Service {
         query: t.interface({
             userJwt: t.string,
             gameId: t.string,
-            slideId: t.string
+            slideId: t.string,
+            singleSlide: t.boolean,
         }),
         //response - only at compiletime 
     }
