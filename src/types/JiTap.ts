@@ -82,7 +82,7 @@ export module JiTap {
     }
     
     export interface Question {
-        label: string;
+        label: string; //deprecated on TT but useful for displaying order
         trace: Trace;
         audio: QuestionAudio;
     }
@@ -102,9 +102,10 @@ export module JiTap {
     
     export interface Soundboard_Options {
         introAudio?: string;
-        bgAudio?: string;
         oneTime: boolean;
         showHints: boolean;
+        showHintsOnStart: boolean;
+        confetti: boolean;
     }
     
     export interface Soundboard_Piece {

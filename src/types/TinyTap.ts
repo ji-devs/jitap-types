@@ -67,29 +67,21 @@ export module TinyTap {
    
 
     export interface Activity {
-        //Recording duration if there is an activity-wide audio
-        //Deprecated recordingDuration: number; //ex. 3.52943310657596,
-        
-        //Recording file if there is an activity-wide audio
-        filePathIntroRecording: string; //ex "photo7/activity0/activity0.mp3",
-    
-        pk: PrimaryKey; // ex. 11577,
-        folderPath: string; // ex. "photo7/activity0"
-    
-        //Settings is where the activities are differentiated at top-level
-        //More differentiation happens per-shape as well
-        settings: CommonActivitySettings | ActivitySettings;
-       
+        filePathIntroRecording: string;
+        pk: PrimaryKey;
+        folderPath: string;
+        settings: ActivitySettings;
         shapes: Array<Shape>;
     }
 
     export interface Shape {
-        filePathThumb: string; //example: "photo1/activity0/shape1/shapeImg.jpg",
-        settings: CommonShapeSettings | ShapeSettings;
-        filePathRecording2: string; //Wrong answer in questions 
-        filePathRecording1: string; //Correct answer in questions
-        pk: PrimaryKey;
+        path: Path;
         pathData: PathDataString;  
+        filePathRecording2: string;
+        filePathRecording1: string;
+        filePathThumb: string;
+        settings: ShapeSettings;
+        pk: PrimaryKey;
     }
    
     //Game sub-types
@@ -147,9 +139,6 @@ export module TinyTap {
     }
   
     //Activity sub-types
-    export interface CommonActivitySettings {
-        linkToPage: PageLink;
-    }
     
     export type ActivitySettings = 
         Question_Settings
@@ -159,37 +148,39 @@ export module TinyTap {
         | Puzzle_Settings
         | TalkType_Settings;
 
-    export type Question_Settings = CommonActivitySettings;
-    export interface SaySomething_Settings extends CommonActivitySettings {
-        advance: boolean; //continue after reading
+    export type Question_Settings = {};
+    export interface Soundboard_Settings {
+        soundFunModeV2:boolean;
+        soundHideHints:boolean;
+        kIsShowSoundboardHintsOnStart:boolean;
+        kShowConfetti:boolean;
+    } 
+    export interface Puzzle_Settings {
+        linkToPage: number;
+        soundFunModeV2: boolean;
+        showShapeV2: boolean;
+        DisableHints: boolean;
+        ShapePuzzleThemeV2: boolean;
+    }
+
+    export interface SaySomething_Settings {
+        advance: boolean;
+        linkToPage: number;
     } 
 
-    export interface Soundboard_Settings extends CommonActivitySettings {
-                    soundFunMode: boolean;  //play one at a time
-                    soundFlatMode: boolean; // ??? 
-                    showShape: boolean;  // show hints
-    } 
-    export interface Video_Settings extends CommonActivitySettings {
+    export interface TalkType_Settings {
+        soundShowToolTip: boolean;
+    }
+    export interface Video_Settings{
         videoRange: VideoRangeString; 
         videoTitle: string; //example: "\"Pacific Dreams\" A California Surfing Film",
         videoURL: string; //example: "http://youtu.be/vk0F8dHo3wU",
         transform: TransformString; //example: "[1.9533259000000001, 0, 0, 1.9533259000000001, -1.9999999999988931, -15.499999999996575]",
         videoThumbURL: string; //example: https://i.ytimg.com/vi/vk0F8dHo3wU/default.jpg"
     } 
-    export interface Puzzle_Settings extends CommonActivitySettings {
-        soundFlatMode: boolean; //3d Shapes
-        ShapePuzzleTheme: PuzzleShapeTheme;
-    }
-    export interface TalkType_Settings extends CommonActivitySettings {
-        soundShowToolTip: boolean; //show hints
-    }
 
 
     //Activity Shape sub-types
-    export interface CommonShapeSettings {
-        linkToPage: PageLink;
-        originTransform: TransformString; 
-    }
     export type ShapeSettings = 
         Question_Shape_Settings
         | SaySomething_Shape_Settings 
@@ -198,25 +189,29 @@ export module TinyTap {
         | Puzzle_Shape_Settings
         | TalkType_Shape_Settings;
 
-    export type Question_Shape_Settings = CommonShapeSettings;
-    export type SaySomething_Shape_Settings = CommonShapeSettings;
-    export interface Soundboard_Shape_Settings extends CommonShapeSettings {
+    export type Question_Shape_Settings = {};
+
+    export interface Soundboard_Shape_Settings {
+        linkToPage: number;
         toolTipText: string;
     }
-    export type Video_Shape_Settings = CommonShapeSettings;
-    export type Puzzle_Shape_Settings = CommonShapeSettings;
-    export interface TalkType_Shape_Settings extends CommonShapeSettings {
-        textInputLanguage: string; //example: "en-US",
-        textAnswerArray: Array<string>; //example: [ "one" ],
-        isUsingSpeakingMode: boolean;  
+
+    export type Puzzle_Shape_Settings = {
+        originTransform: string;
+        filePathRecording1: string;
     }
 
-    // TODO - organize below here
-    export enum PuzzleShapeTheme {
-        THREE_D = 0,
-        FLAT = 1,
-        WOODEN = 2
+    export type SaySomething_Shape_Settings = {};
+    export interface TalkType_Shape_Settings {
+        linkToPage: number;
+        textAnswerArray: Array<string>;
+        isUsingSpeakingMode: boolean;  
+        //DEPRECATED textInputLanguage: string; //example: "en-US",
     }
+
+    export type Video_Shape_Settings = {};
+
+    // TODO - organize below here
 
     export enum InteractiveLoopType {
         PLAY_ON_LOAD = 0,
@@ -245,7 +240,24 @@ export module TinyTap {
     //CSS matrix() (not matrix3D())
     //ex. "[number, number, number, number, number, number]",
     export type TransformString = string;
-    
+   
+    export type Path = Array<PathPoint>;
+    export type PathPoint = {
+        type: PathElementType,
+        x: number;
+        y: number;
+        cp1x?: number;
+        cp1y?: number;
+        cp2x?: number;
+        cp2y?: number;
+    };
+    export enum PathElementType {
+        MoveToPoint = 0,
+        AddLineToPoint = 1,
+        AddQuadCurveToPoint = 2,
+        AddCurveToPoint = 3,
+        CloseSubpath = 4,
+    }
     //XML / Plist
     export type PathDataString = string;
     
