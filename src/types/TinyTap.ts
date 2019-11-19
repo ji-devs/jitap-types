@@ -198,7 +198,7 @@ export module TinyTap {
     }
 
     export type Puzzle_Shape_Settings = {
-        originTransform: string;
+        originTransform: Transform;
         filePathRecording1: string;
     }
 
