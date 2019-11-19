@@ -76,7 +76,6 @@ export module TinyTap {
 
     export interface Shape {
         path: Path;
-        pathData: PathDataString;  
         filePathRecording2: string;
         filePathRecording1: string;
         filePathThumb: string;
@@ -122,9 +121,10 @@ export module TinyTap {
    
 
     export interface CommonLayer {
-        frame: FrameString;
-        
-        transform: TransformString; 
+        width: number;
+        height: number;
+
+        transform: Transform; 
     
         InteractiveLoopType: InteractiveLoopType;
     
@@ -176,7 +176,7 @@ export module TinyTap {
         videoRange: VideoRangeString; 
         videoTitle: string; //example: "\"Pacific Dreams\" A California Surfing Film",
         videoURL: string; //example: "http://youtu.be/vk0F8dHo3wU",
-        transform: TransformString; //example: "[1.9533259000000001, 0, 0, 1.9533259000000001, -1.9999999999988931, -15.499999999996575]",
+        transform: Transform; //example: "[1.9533259000000001, 0, 0, 1.9533259000000001, -1.9999999999988931, -15.499999999996575]",
         videoThumbURL: string; //example: https://i.ytimg.com/vi/vk0F8dHo3wU/default.jpg"
     } 
 
@@ -237,10 +237,6 @@ export module TinyTap {
     
     export type PageLink = number; //not pk, rather it's the order of the slide (0-based)
     
-    //CSS matrix() (not matrix3D())
-    //ex. "[number, number, number, number, number, number]",
-    export type TransformString = string;
-   
     export type Path = Array<PathPoint>;
     export type PathPoint = {
         type: PathElementType,
@@ -258,14 +254,11 @@ export module TinyTap {
         AddCurveToPoint = 3,
         CloseSubpath = 4,
     }
-    //XML / Plist
-    export type PathDataString = string;
     
     //example: "{0, 1262.1670999999999}"
     //not a lawful json string...
     export type VideoRangeString = string;
-    
-    //example: "{{x1,y1}, {x2, y2}}"
-    //not a lawful json string...
-    export type FrameString = string;
+
+    //see: https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/matrix
+    export type Transform = [number, number, number, number, number, number];
 }
