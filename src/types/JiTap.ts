@@ -148,6 +148,7 @@ export module JiTap {
     export interface Activity_Video {
         kind: ActivityKind.VIDEO; 
         src?: string;
+        youtubeId?: string;
         type?: VideoType;
     }
     
