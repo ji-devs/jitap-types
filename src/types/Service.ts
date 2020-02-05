@@ -83,20 +83,17 @@ export module Service {
 
     export const QueuePublishGame = {
         endpoint: "queue-publish-game",
-        query: t.interface({
-            userJwt: t.string, 
-            gameId: t.string,
-            userToken: t.string, 
-            old_token: t.string, 
-            new_token: t.string, 
-            title: t.string,
-            description: t.string,
-            isPublic: t.boolean,
-            isEditable: t.boolean,
-            categoryId: t.number,
-            ageId: t.number,
-            languageId: t.number,
-        }),
+        query: t.intersection([
+            t.interface({
+                userJwt: t.string, 
+                gameId: t.string,
+                userToken: t.string, 
+                old_token: t.string, 
+                new_token: t.string, 
+                title: t.string,
+            }), 
+            JiTap.LastPublishSettings
+        ]),
         response: t.interface({
             publishJwt: t.string
         })
@@ -108,14 +105,7 @@ export module Service {
             userJwt: t.string, 
             gameId: t.string,
         }),
-        response: t.partial({
-            description: t.string,
-            isPublic: t.boolean,
-            isEditable: t.boolean,
-            categoryId: t.number,
-            ageId: t.number,
-            languageId: t.number,
-        })
+        response: t.partial(JiTap.LastPublishSettings.props)
     }
 
     export const PublishGame = {

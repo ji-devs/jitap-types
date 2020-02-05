@@ -21,7 +21,7 @@ export module JiTap {
         lastScreenshotTime: number;
     }
 
-    export const Game = t.interface({
+    const _Game = t.interface({
         //the unique id for the game
         id: t.string,
         //this is needed for deriving a title for some reason. Whatever
@@ -39,10 +39,29 @@ export module JiTap {
         //timestamp when this game was updated
         lastModifiedTime: t.number,
         //timestamp when this game was published
-        lastPublishTime: t.number
+        lastPublishTime: t.number,
     });
 
+    export const LastPublishSettings = t.interface({
+        description: t.string,
+        isPublic: t.boolean,
+        isEditable: t.boolean,
+        categoryId: t.number,
+        ageId: t.number,
+        languageId: t.number,
+    });
+
+    const _GameWithLastPublish = t.partial({
+        lastPublishSettings: LastPublishSettings
+    })
+
+    //same as _Game & ({lastPublishSettings?: LastPublishSettings})
+    //in other words Game is _Game with optional lastPublishSettings
+    export const Game = t.intersection([_Game, _GameWithLastPublish]);
+
     export interface Game extends t.TypeOf<typeof Game> {}
+
+    const foo:Game = {} as any;
 
     export interface Slide {
         design:Design;
