@@ -50,6 +50,7 @@ export module JiTap {
         ageId: t.number,
         languageId: t.number,
     });
+    export interface LastPublishSettings extends t.TypeOf<typeof LastPublishSettings> {}
 
     const _GameWithLastPublish = t.partial({
         lastPublishSettings: LastPublishSettings
