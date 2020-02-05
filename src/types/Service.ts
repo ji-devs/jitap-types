@@ -102,6 +102,22 @@ export module Service {
         })
     }
 
+    export const GetLastPublishSettings = {
+        endpoint: "get-last-publish-settings",
+        query: t.interface({
+            userJwt: t.string, 
+            gameId: t.string,
+        }),
+        response: t.partial({
+            description: t.string,
+            isPublic: t.boolean,
+            isEditable: t.boolean,
+            categoryId: t.number,
+            ageId: t.number,
+            languageId: t.number,
+        })
+    }
+
     export const PublishGame = {
         endpoint: "publish-game",
         body: t.interface({
@@ -354,6 +370,11 @@ export module Service {
         Response: t.TypeOf<typeof QueuePublishGame.response>;
     }
 
+    export interface GetLastPublishSettings {
+        Query: t.TypeOf<typeof GetLastPublishSettings.query>;
+        Body?: null; 
+        Response: t.TypeOf<typeof GetLastPublishSettings.response>;
+    }
     export interface PublishGame {
         Query?: null; 
         Body: t.TypeOf<typeof PublishGame.body>;
