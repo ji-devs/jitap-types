@@ -120,11 +120,15 @@ export module Service {
 
     export const GetPlayerMeta = {
         endpoint: "get-player-meta",
-        query: t.interface({
-            userJwt: t.string,
-            gameId: t.string,
-            slideId: t.string,
-        }),
+        query: t.intersection([
+            t.interface({
+                userJwt: t.string,
+                gameId: t.string,
+            }),
+            t.partial({
+                slideId: t.string,
+            })
+        ])
         //response - only at compiletime 
     }
 
