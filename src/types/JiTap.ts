@@ -209,17 +209,19 @@ export module JiTap {
     //IMAGES
     export interface ImageAsset {
         src: string;
+        //no longer needed, text is images too - but kept for backwards compatibility
         type: ImageAssetSourceType;
         position: Point;
         scale: number;
         rotation: number;
         nativeWidth: number;
         nativeHeight : number;
+        backingText?: string;
     }
     
     export enum ImageAssetSourceType {
         URL = 0,
-        HTML = 1
+        HTML = 1, //deprecated but kept for backwards compatibility
     }
     
     //TRACE
